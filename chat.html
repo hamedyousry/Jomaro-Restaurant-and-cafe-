@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+ <!-- ترميز الأحرف -->
+    <meta charset="UTF-8">
+
+    <!-- توافق العرض على الجوال -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- عنوان الصفحة -->
+    <title>Jomaro Restaurant and Cafe - استمتع بأفضل المأكولات والمشروبات</title>
+
+    <!-- وصف الصفحة -->
+    <meta name="description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة. احجز طاولتك الآن!">
+
+    <!-- ميتا الروبوتات -->
+    <meta name="robots" content="index, follow">
+
+    <!-- رابط كانونيكال -->
+    <link rel="canonical" href="https://example.com/this-page">
+
+    <!-- أيقونة الموقع (Favicon) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+
+    <!-- Open Graph Tags (لمشاركة الصفحة على فيسبوك، واتساب، إلخ) -->
+    <meta property="og:title" content="Jomaro Restaurant and Cafe">
+    <meta property="og:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
+    <meta property="og:image" content="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <meta property="og:url" content="https://example.com/this-page">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jomaro Restaurant and Cafe">
+    <meta name="twitter:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
+    <meta name="twitter:image" content="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <meta name="twitter:site" content="@your_twitter_handle"> <!-- استبدل باسم حسابك على تويتر -->
+
+    <!-- لون الثيم للمتصفحات الحديثة -->
+    <meta name="theme-color" content="#d62828"> <!-- لون أحمر مناسب للمطاعم -->
+
+    <!-- اسم المؤلف أو الشركة -->
+    <meta name="author" content="Jomaro Restaurant and Cafe">
+
+    <!-- كلمات مفتاحية (اختياري - لا تؤثر في SEO لكن بعض الأنظمة تستخدمها) -->
+    <meta name="keywords" content="مطعم, كافيه, جومارو, طعام, مشروبات, حجز طاولة, مأكولات, شيشة, قهوة, حلويات">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>دردشة جومارو 🍽️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="script/chat.css">
+</head>
+<body>
+  <div class="chat-header">
+        <h1>دردشة جومارو 🍽️</h1>
+        <p>تحدث معنا مباشرة للطلب أو الاستفسار</p>
+        <div class="connection-status" id="connectionStatus">متصل بالإنترنت</div>
+        <!-- قسم الملف الشخصي -->
+        <div class="user-profile-section" id="userProfileSection">
+            <div class="info">
+                <span><i class="fas fa-user"></i> <span id="profileName">اسمك</span></span>
+                <span><i class="fas fa-phone"></i> <span id="profilePhone">رقمك</span></span>
+            </div>
+            <div>
+                <button class="edit-profile-btn" id="editProfileBtn">تعديل</button>
+                <button class="delete-chat-btn" id="deleteChatBtn">حذف المحادثة</button>
+            </div>
+        </div>
+    </div>
+    <div class="chat-container">
+        <div class="messages-area" id="messagesArea">
+            <div class="welcome-message">
+                <i class="fas fa-comments"></i>
+                <p>مرحبًا! سنبدأ المحادثة بعد إدخال معلوماتك</p>
+            </div>
+        </div>
+        <div class="typing-indicator" id="typingIndicator">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="input-area">
+            <div class="reply-preview" id="replyPreview">
+                <span id="replyPreviewText">الرد على: ...</span>
+                <span class="cancel-reply" id="cancelReply">✕</span>
+            </div>
+            <div class="input-row">
+                <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا..." maxlength="500" disabled>
+                <div class="send-actions">
+                    <button class="action-btn" id="sendButton" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <button class="action-btn" id="locationButton" disabled>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- نافذة تعديل الملف الشخصي -->
+    <div class="profile-modal" id="profileModal">
+        <div class="profile-content">
+            <h3>تعديل بياناتك</h3>
+            <div class="input-group">
+                <label for="editNameInput">الاسم الكامل:</label>
+                <input type="text" id="editNameInput" placeholder="مثال: أحمد محمد" maxlength="30">
+                <div class="error-message" id="editNameError">الاسم مطلوب (3 أحرف على الأقل)</div>
+            </div>
+            <div class="input-group">
+                <label for="editPhoneInput">رقم الهاتف:</label>
+                <input type="tel" id="editPhoneInput" placeholder="مثال: 01012345678" maxlength="15">
+                <div class="error-message" id="editPhoneError">رقم هاتف مصري صحيح</div>
+            </div>
+            <div class="btn-group">
+                <button id="saveProfileBtn">حفظ</button>
+                <button class="cancel" id="cancelProfileBtn">إلغاء</button>
+            </div>
+        </div>
+    </div>
+    <!-- نافذة الترحيب -->
+    <div class="welcome-modal" id="welcomeModal">
+        <div class="modal-content">
+            <h2>مرحبًا بك في جومارو! 🎉</h2>
+            <p class="subtitle">لبدء المحادثة، من فضلك أدخل معلوماتك التالية. هذه المعلومات إلزامية لخدمتك بشكل أفضل.</p>
+            <div class="input-group">
+                <label for="customerNameInput">الاسم الكامل (مطلوب):</label>
+                <input type="text" id="customerNameInput" placeholder="مثال: أحمد محمد" maxlength="30">
+                <div class="error-message" id="nameError">الاسم مطلوب ويجب أن يكون 3 أحرف على الأقل</div>
+            </div>
+            <div class="input-group">
+                <label for="customerPhoneInput">رقم الهاتف (مطلوب):</label>
+                <input type="tel" id="customerPhoneInput" placeholder="مثال: 01012345678" maxlength="15">
+                <div class="error-message" id="phoneError">رقم الهاتف مطلوب ويجب أن يكون رقمًا مصريًا صحيحًا</div>
+            </div>
+            <button id="startChatBtn">
+                <i class="fas fa-comment"></i> بدء المحادثة
+            </button>
+        </div>
+    </div>
+    <div class="reactions-popup" id="reactionsPopup"></div>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+    <script>
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDIs4dsxIk0xtuUaTGkIlVGKuFqwHBfr7g",
+            authDomain: "app-da684.firebaseapp.com",
+            projectId: "app-da684",
+            storageBucket: "app-da684.firebasestorage.app",
+            messagingSenderId: "204039458597",
+            appId: "1:204039458597:web:5be11d7494ac10cb3314cc"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const storage = firebase.storage();
+        // Global variables
+        let conversationId = localStorage.getItem('chat_conversation_id') || null;
+        let customerName = localStorage.getItem('chat_customer_name') || null;
+        let customerPhone = localStorage.getItem('chat_customer_phone') || null;
+        const messagesArea = document.getElementById('messagesArea');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const locationButton = document.getElementById('locationButton');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const welcomeModal = document.getElementById('welcomeModal');
+        const customerNameInput = document.getElementById('customerNameInput');
+        const customerPhoneInput = document.getElementById('customerPhoneInput');
+        const startChatBtn = document.getElementById('startChatBtn');
+        const nameError = document.getElementById('nameError');
+        const phoneError = document.getElementById('phoneError');
+        const connectionStatus = document.getElementById('connectionStatus');
+        const replyPreview = document.getElementById('replyPreview');
+        const replyPreviewText = document.getElementById('replyPreviewText');
+        const cancelReply = document.getElementById('cancelReply');
+        const reactionsPopup = document.getElementById('reactionsPopup');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const profileModal = document.getElementById('profileModal');
+        const editNameInput = document.getElementById('editNameInput');
+        const editPhoneInput = document.getElementById('editPhoneInput');
+        const editNameError = document.getElementById('editNameError');
+        const editPhoneError = document.getElementById('editPhoneError');
+        const saveProfileBtn = document.getElementById('saveProfileBtn');
+        const cancelProfileBtn = document.getElementById('cancelProfileBtn');
+        const profileName = document.getElementById('profileName');
+        const profilePhone = document.getElementById('profilePhone');
+        const deleteChatBtn = document.getElementById('deleteChatBtn');
+        let currentReplyTo = null;
+        let hasInitialized = false;
+        const reactions = ['❤️', '👍', '👎', '😂', '😮', '🙏', '🎉', '😍', '😢', '😡', '🤔', '👏'];
+        // Connection status
+        function updateConnectionStatus() {
+            if (navigator.onLine) {
+                connectionStatus.textContent = 'متصل بالإنترنت';
+                connectionStatus.style.background = 'rgba(76, 175, 80, 0.2)';
+                connectionStatus.style.color = '#4CAF50';
+                connectionStatus.style.borderColor = 'rgba(76, 175, 80, 0.3)';
+            } else {
+                connectionStatus.textContent = 'غير متصل بالإنترنت';
+                connectionStatus.style.background = 'rgba(244, 67, 54, 0.2)';
+                connectionStatus.style.color = '#F44336';
+                connectionStatus.style.borderColor = 'rgba(244, 67, 54, 0.3)';
+            }
+        }
+        window.addEventListener('online', updateConnectionStatus);
+        window.addEventListener('offline', updateConnectionStatus);
+        updateConnectionStatus();
+        // Validation helpers
+        function validateName(name) {
+            return name && name.trim().length >= 3;
+        }
+        function validatePhone(phone) {
+            if (!phone) return false;
+            let cleanPhone = phone.replace(/\s/g, '');
+            if (cleanPhone.startsWith('01') && cleanPhone.length === 11) return true;
+            if (cleanPhone.startsWith('201') && cleanPhone.length === 12) return true;
+            if (cleanPhone.startsWith('+20') && cleanPhone.length === 13) return true;
+            return false;
+        }
+        function formatPhone(phone) {
+            let cleanPhone = phone.replace(/\s/g, '');
+            if (cleanPhone.startsWith('01') && cleanPhone.length === 11) return '+2' + cleanPhone;
+            if (cleanPhone.startsWith('201') && cleanPhone.length === 12) return '+' + cleanPhone;
+            return cleanPhone;
+        }
+        // Initialize chat
+        function initializeChat() {
+            if (hasInitialized) return;
+            hasInitialized = true;
+            messageInput.disabled = false;
+            sendButton.disabled = false;
+            locationButton.disabled = false;
+            messageInput.placeholder = "اكتب رسالتك هنا...";
+            if (!conversationId) {
+                conversationId = generateConversationId();
+                localStorage.setItem('chat_conversation_id', conversationId);
+            }
+            // تحديث بيانات المستخدم في واجهة الدردشة
+            updateProfileUI();
+            // تحميل الرسائل السابقة
+            loadPreviousMessages();
+            // مراقبة وصول رسائل جديدة
+            db.ref(`chat/conversations/${conversationId}/messages`).on('child_added', (snapshot) => {
+                const message = snapshot.val();
+                displayMessage(message, snapshot.key);
+                setTimeout(() => {
+                    const messageElement = document.querySelector(`[data-message-id="${snapshot.key}"]`);
+                    if (messageElement) {
+                        messageElement.classList.add('new');
+                        setTimeout(() => messageElement.classList.remove('new'), 2500);
+                    }
+                }, 100);
+            });
+            // مراقبة كتابة المسؤول
+            db.ref(`chat/conversations/${conversationId}/adminTyping`).on('value', (snapshot) => {
+                typingIndicator.style.display = snapshot.val() === true ? 'block' : 'none';
+            });
+            // مراقبة ردود الأفعال
+            db.ref(`chat/conversations/${conversationId}/reactions`).on('value', (snapshot) => {
+                const reactionsData = snapshot.val();
+                if (reactionsData) {
+                    Object.keys(reactionsData).forEach(messageId => updateReactionsUI(messageId, reactionsData[messageId]));
+                }
+            });
+            // عرض رسالة الترحيب إذا لم تكن هناك رسائل
+            setTimeout(() => {
+                if (messagesArea.children.length === 0 || (messagesArea.children.length === 1 && messagesArea.querySelector('.welcome-message'))) {
+                    displayWelcomeMessage();
+                }
+            }, 1000);
+        }
+        function generateConversationId() {
+            return 'conv_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+        }
+        function loadPreviousMessages() {
+            messagesArea.innerHTML = '<div class="welcome-message"><i class="fas fa-history"></i><p>جاري تحميل تاريخ المحادثة...</p></div>';
+            db.ref(`chat/conversations/${conversationId}/messages`).once('value')
+                .then((snapshot) => {
+                    messagesArea.innerHTML = '';
+                    const messages = snapshot.val();
+                    if (messages) {
+                        const sortedMessages = Object.entries(messages).sort(([,a], [,b]) => a.timestamp - b.timestamp);
+                        sortedMessages.forEach(([msgId, message]) => displayMessage(message, msgId));
+                        showNotification('تم تحميل تاريخ المحادثة بالكامل! 🎉');
+                    } else {
+                        displayWelcomeMessage();
+                    }
+                })
+                .catch(err => {
+                    console.error('فشل تحميل الرسائل السابقة:', err);
+                    messagesArea.innerHTML = '';
+                    displayWelcomeMessage();
+                    showNotification('فشل تحميل الرسائل السابقة 😢');
+                });
+        }
+        function displayWelcomeMessage() {
+            const welcomeMsg = {
+                sender: 'admin',
+                text: `مرحبًا ${customerName}! 👋 أنا مساعد جومارو. كيف يمكنني مساعدتك اليوم؟
+يمكنك طلب الطعام، الاستفسار عن العروض، أو حتى إرسال موقعك لمساعدتك في الوصول إلينا.`,
+                timestamp: Date.now()
+            };
+            displayMessage(welcomeMsg, 'welcome_msg');
+        }
+        // عرض الرسالة
+        function displayMessage(message, messageId) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${message.sender}`;
+            messageDiv.setAttribute('data-message-id', messageId);
+            if (message.type === 'location') messageDiv.classList.add('location');
+            if (message.replyTo) {
+                const replyIndicator = document.createElement('div');
+                replyIndicator.className = 'reply-indicator';
+                replyIndicator.innerHTML = `<i class="fas fa-reply"></i> <span>رد على: "${message.replyToText?.substring(0, 20) || 'رسالة سابقة'}"</span>`;
+                messageDiv.appendChild(replyIndicator);
+            }
+            let messageContent;
+            if (message.type === 'location') {
+                messageContent = document.createElement('div');
+                messageContent.className = 'location-message';
+                const link = document.createElement('a');
+                link.href = `https://www.google.com/maps?q=${message.latitude},${message.longitude}`;
+                link.target = '_blank';
+                link.textContent = `📍 الموقع: ${message.latitude.toFixed(4)}, ${message.longitude.toFixed(4)}`;
+                messageContent.appendChild(link);
+            } else {
+                messageContent = document.createElement('div');
+                messageContent.className = 'message-content';
+                messageContent.textContent = message.text;
+            }
+            const messageInfo = document.createElement('div');
+            messageInfo.className = 'message-info';
+            const date = new Date(message.timestamp);
+            const timeStr = `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+            messageInfo.innerHTML = `
+                <span>${timeStr}</span>
+                <i class="fas fa-reply" title="رد على هذه الرسالة" data-message-id="${messageId}" data-sender="${message.sender}" data-text="${encodeURIComponent(message.text || '')}"></i>
+            `;
+            if (currentReplyTo && currentReplyTo.messageId === messageId) {
+                const cancelReplyBtn = document.createElement('span');
+                cancelReplyBtn.className = 'cancel-reply-on-message';
+                cancelReplyBtn.innerHTML = '✕';
+                cancelReplyBtn.title = 'إلغاء الرد على هذه الرسالة';
+                cancelReplyBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentReplyTo = null;
+                    replyPreview.classList.remove('show');
+                    document.querySelectorAll('.cancel-reply-on-message').forEach(btn => btn.remove());
+                    showNotification('تم إلغاء الرد على الرسالة.');
+                });
+                messageInfo.prepend(cancelReplyBtn);
+            }
+            const reactionsDiv = document.createElement('div');
+            reactionsDiv.className = 'message-reactions';
+            reactionsDiv.setAttribute('data-message-id', messageId);
+            messageDiv.appendChild(messageContent);
+            messageDiv.appendChild(messageInfo);
+            messageDiv.appendChild(reactionsDiv);
+            messagesArea.appendChild(messageDiv);
+            // إضافة حدث النقر على أي رد فعل لتعديله
+            reactionsDiv.addEventListener('click', (e) => {
+                if (e.target.closest('.reaction')) {
+                    const reactionEl = e.target.closest('.reaction');
+                    const currentReaction = reactionEl.firstChild.textContent.trim();
+                    showReactionsPopup(messageId, e.clientX, e.clientY, currentReaction);
+                }
+            });
+            const replyIcon = messageInfo.querySelector('.fa-reply');
+            if (replyIcon) {
+                replyIcon.addEventListener('click', (e) => {
+                    const target = e.currentTarget;
+                    setReplyTo(target.getAttribute('data-message-id'), target.getAttribute('data-sender'), decodeURIComponent(target.getAttribute('data-text')));
+                });
+            }
+            messageDiv.addEventListener('click', (e) => {
+                if (e.target.closest('.fa-reply') || e.target.closest('.reaction') || e.target.closest('.cancel-reply-on-message')) return;
+                showReactionsPopup(messageId, e.clientX, e.clientY);
+            });
+        }
+        function showReactionsPopup(messageId, x, y, currentReaction = null) {
+            reactionsPopup.innerHTML = '';
+            reactions.forEach(reaction => {
+                const btn = document.createElement('div');
+                btn.className = 'reaction-btn';
+                btn.textContent = reaction;
+                btn.addEventListener('click', () => {
+                    addOrModifyReaction(messageId, reaction, currentReaction);
+                    reactionsPopup.style.display = 'none';
+                });
+                reactionsPopup.appendChild(btn);
+            });
+            const popupWidth = 220;
+            const popupHeight = 120;
+            let leftPos = x - popupWidth / 2;
+            let topPos = y - popupHeight - 10;
+            if (leftPos < 10) leftPos = 10;
+            if (leftPos + popupWidth > window.innerWidth - 10) leftPos = window.innerWidth - popupWidth - 10;
+            if (topPos < 10) topPos = y + 10;
+            reactionsPopup.style.left = `${leftPos}px`;
+            reactionsPopup.style.top = `${topPos}px`;
+            reactionsPopup.classList.add('show');
+            setTimeout(() => document.addEventListener('click', closeReactionsPopup, { once: true }), 100);
+        }
+        function closeReactionsPopup() {
+            reactionsPopup.classList.remove('show');
+        }
+        // تعديل أو إضافة رد فعل
+        function addOrModifyReaction(messageId, newReaction, currentReaction = null) {
+            if (!conversationId) return;
+            const reactionRef = db.ref(`chat/conversations/${conversationId}/reactions/${messageId}`);
+            if (currentReaction) {
+                // حذف الرد الفعلي القديم
+                reactionRef.child(currentReaction).transaction(current => {
+                    if (current && current > 1) {
+                        return current - 1;
+                    } else {
+                        return null; // حذف إذا كان 1 فقط
+                    }
+                });
+            }
+            // إضافة الرد الفعلي الجديد
+            reactionRef.child(newReaction).transaction(current => (current || 0) + 1)
+                .then(() => console.log(`تم ${currentReaction ? 'تعديل' : 'إضافة'} رد الفعل إلى:`, newReaction))
+                .catch(err => {
+                    console.error('فشل تعديل/إضافة رد الفعل:', err);
+                    showNotification('فشل تعديل/إضافة رد الفعل 😢');
+                });
+        }
+        function updateReactionsUI(messageId, reactionsData) {
+            const reactionsDiv = document.querySelector(`.message-reactions[data-message-id="${messageId}"]`);
+            if (!reactionsDiv) return;
+            reactionsDiv.innerHTML = '';
+            Object.keys(reactionsData).forEach(reaction => {
+                const count = reactionsData[reaction];
+                const reactionEl = document.createElement('div');
+                reactionEl.className = 'reaction';
+                reactionEl.innerHTML = `${reaction} ${count > 1 ? count : ''}`;
+                reactionsDiv.appendChild(reactionEl);
+            });
+        }
+        function setReplyTo(messageId, sender, text) {
+            currentReplyTo = {
+                messageId: messageId,
+                sender: sender,
+                text: text
+            };
+            replyPreviewText.textContent = `الرد على: "${text.substring(0, 30) + (text.length > 30 ? '...' : '')}"`;
+            replyPreview.classList.add('show');
+            document.querySelectorAll('.cancel-reply-on-message').forEach(btn => btn.remove());
+        }
+        cancelReply.addEventListener('click', () => {
+            currentReplyTo = null;
+            replyPreview.classList.remove('show');
+            document.querySelectorAll('.cancel-reply-on-message').forEach(btn => btn.remove());
+        });
+        // إرسال رسالة + تحديث lastActive
+        function sendMessage() {
+            const text = messageInput.value.trim();
+            if (text && conversationId) {
+                const message = {
+                    sender: 'customer',
+                    text: text,
+                    timestamp: Date.now()
+                };
+                if (currentReplyTo) {
+                    message.replyTo = currentReplyTo.messageId;
+                    message.replyToText = currentReplyTo.text;
+                }
+                loadingOverlay.classList.add('show');
+                db.ref(`chat/conversations/${conversationId}/messages`).push(message)
+                    .then(() => {
+                        // تحديث وقت آخر نشاط
+                        updateLastActive();
+                        messageInput.value = '';
+                        currentReplyTo = null;
+                        replyPreview.classList.remove('show');
+                        document.querySelectorAll('.cancel-reply-on-message').forEach(btn => btn.remove());
+                        loadingOverlay.classList.remove('show');
+                    })
+                    .catch(err => {
+                        console.error('فشل إرسال الرسالة:', err);
+                        showNotification('فشل إرسال الرسالة 😢');
+                        loadingOverlay.classList.remove('show');
+                    });
+            }
+        }
+        // تحديث lastActive
+        function updateLastActive() {
+            if (conversationId) {
+                db.ref(`chat/conversations/${conversationId}`).update({
+                    lastActive: Date.now()
+                });
+            }
+        }
+        sendButton.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+        // تحديث lastActive عند الكتابة
+        let typingTimer;
+        messageInput.addEventListener('input', () => {
+            if (conversationId) {
+                updateLastActive();
+                db.ref(`chat/conversations/${conversationId}/customerTyping`).set(true);
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(() => {
+                    db.ref(`chat/conversations/${conversationId}/customerTyping`).set(false);
+                }, 2000);
+            }
+        });
+        locationButton.addEventListener('click', () => {
+            if (!navigator.geolocation) {
+                alert('المتصفح لا يدعم خاصية تحديد الموقع');
+                return;
+            }
+            locationButton.disabled = true;
+            locationButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            loadingOverlay.classList.add('show');
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    const locationMessage = {
+                        sender: 'customer',
+                        type: 'location',
+                        latitude: latitude,
+                        longitude: longitude,
+                        timestamp: Date.now()
+                    };
+                    db.ref(`chat/conversations/${conversationId}/messages`).push(locationMessage)
+                        .then(() => {
+                            updateLastActive();
+                            locationButton.disabled = false;
+                            locationButton.innerHTML = '<i class="fas fa-map-marker-alt"></i>';
+                            loadingOverlay.classList.remove('show');
+                            showNotification('تم إرسال موقعك بنجاح! 🗺️');
+                        })
+                        .catch(err => {
+                            console.error('فشل إرسال الموقع:', err);
+                            showNotification('فشل إرسال الموقع 😢');
+                            locationButton.disabled = false;
+                            locationButton.innerHTML = '<i class="fas fa-map-marker-alt"></i>';
+                            loadingOverlay.classList.remove('show');
+                        });
+                },
+                (error) => {
+                    console.error('Error getting location:', error);
+                    alert('فشل الحصول على الموقع. يرجى التأكد من تفعيل خدمات الموقع.');
+                    locationButton.disabled = false;
+                    locationButton.innerHTML = '<i class="fas fa-map-marker-alt"></i>';
+                    loadingOverlay.classList.remove('show');
+                }
+            );
+        });
+        // ======== دوال تعديل الملف الشخصي ========
+        function updateProfileUI() {
+            profileName.textContent = customerName || 'غير معروف';
+            profilePhone.textContent = customerPhone || 'غير معروف';
+        }
+        editProfileBtn.addEventListener('click', () => {
+            editNameInput.value = customerName || '';
+            editPhoneInput.value = customerPhone || '';
+            editNameError.style.display = 'none';
+            editPhoneError.style.display = 'none';
+            profileModal.classList.add('show');
+        });
+        cancelProfileBtn.addEventListener('click', () => {
+            profileModal.classList.remove('show');
+        });
+        saveProfileBtn.addEventListener('click', () => {
+            const newName = editNameInput.value.trim();
+            const newPhone = editPhoneInput.value.trim();
+            let isValid = true;
+            if (!validateName(newName)) {
+                editNameError.style.display = 'block';
+                editNameInput.style.borderColor = "#F44336";
+                editNameInput.style.boxShadow = "0 0 0 2px rgba(244, 67, 54, 0.3)";
+                isValid = false;
+            } else {
+                editNameError.style.display = 'none';
+                editNameInput.style.borderColor = "#444";
+                editNameInput.style.boxShadow = "none";
+            }
+            if (!validatePhone(newPhone)) {
+                editPhoneError.style.display = 'block';
+                editPhoneInput.style.borderColor = "#F44336";
+                editPhoneInput.style.boxShadow = "0 0 0 2px rgba(244, 67, 54, 0.3)";
+                isValid = false;
+            } else {
+                editPhoneError.style.display = 'none';
+                editPhoneInput.style.borderColor = "#444";
+                editPhoneInput.style.boxShadow = "none";
+            }
+            if (isValid) {
+                const formattedPhone = formatPhone(newPhone);
+                customerName = newName;
+                customerPhone = formattedPhone;
+                localStorage.setItem('chat_customer_name', newName);
+                localStorage.setItem('chat_customer_phone', formattedPhone);
+                if (conversationId) {
+                    db.ref(`chat/conversations/${conversationId}`).update({
+                        customerName: newName,
+                        customerPhone: formattedPhone,
+                        lastActive: Date.now()
+                    }).then(() => {
+                        updateProfileUI();
+                        profileModal.classList.remove('show');
+                        showNotification('تم تحديث بياناتك بنجاح! ✅');
+                    }).catch(err => {
+                        console.error('فشل تحديث البيانات:', err);
+                        showNotification('فشل تحديث البيانات. يرجى المحاولة مرة أخرى.');
+                    });
+                }
+            }
+        });
+        // ======== دالة حذف المحادثة (نهائيًا) ========
+        deleteChatBtn.addEventListener('click', () => {
+            if (confirm('⚠️ تحذير: سيتم حذف المحادثة نهائيًا من النظام ولن تتمكن من استعادتها. هل أنت متأكد؟')) {
+                if (conversationId) {
+                    // حذف المحادثة بأكملها من Firebase
+                    db.ref(`chat/conversations/${conversationId}`).remove()
+                        .then(() => {
+                            // حذف من localStorage
+                            localStorage.removeItem('chat_conversation_id');
+                            localStorage.removeItem('chat_customer_name');
+                            localStorage.removeItem('chat_customer_phone');
+                            // إعادة تعيين المتغيرات
+                            conversationId = null;
+                            customerName = null;
+                            customerPhone = null;
+                            // إعادة تعيين واجهة المستخدم
+                            messagesArea.innerHTML = '<div class="welcome-message"><i class="fas fa-check-circle"></i><p>تم حذف المحادثة نهائيًا بنجاح! ✅</p></div>';
+                            messageInput.value = '';
+                            messageInput.disabled = true;
+                            sendButton.disabled = true;
+                            locationButton.disabled = true;
+                            // إعادة فتح نافذة الترحيب
+                            welcomeModal.classList.add('show');
+                            showNotification('تم حذف المحادثة نهائيًا من النظام. ✅');
+                        })
+                        .catch(err => {
+                            console.error('فشل حذف المحادثة:', err);
+                            showNotification('فشل حذف المحادثة. يرجى المحاولة مرة أخرى.');
+                        });
+                }
+            }
+        });
+        // ======== نهاية دوال تعديل الملف الشخصي ========
+        function showNotification(message, duration = 3500) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `<i class="fas fa-bell"></i> ${message}`;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, duration);
+        }
+        function startChat() {
+            const name = customerNameInput.value.trim();
+            const phone = customerPhoneInput.value.trim();
+            let isValid = true;
+            if (!validateName(name)) {
+                nameError.style.display = 'block';
+                customerNameInput.style.borderColor = "#F44336";
+                customerNameInput.style.boxShadow = "0 0 0 2px rgba(244, 67, 54, 0.3)";
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+                customerNameInput.style.borderColor = "#444";
+                customerNameInput.style.boxShadow = "none";
+            }
+            if (!validatePhone(phone)) {
+                phoneError.style.display = 'block';
+                customerPhoneInput.style.borderColor = "#F44336";
+                customerPhoneInput.style.boxShadow = "0 0 0 2px rgba(244, 67, 54, 0.3)";
+                isValid = false;
+            } else {
+                phoneError.style.display = 'none';
+                customerPhoneInput.style.borderColor = "#444";
+                customerPhoneInput.style.boxShadow = "none";
+            }
+            if (isValid) {
+                customerName = name;
+                customerPhone = formatPhone(phone);
+                localStorage.setItem('chat_customer_name', name);
+                localStorage.setItem('chat_customer_phone', customerPhone);
+                if (!conversationId) {
+                    conversationId = generateConversationId();
+                    localStorage.setItem('chat_conversation_id', conversationId);
+                }
+                db.ref(`chat/conversations/${conversationId}`).set({
+                    customerName: name,
+                    customerPhone: customerPhone,
+                    startedAt: Date.now(),
+                    lastActive: Date.now()
+                }).then(() => {
+                    welcomeModal.classList.remove('show');
+                    initializeChat();
+                    showNotification(`مرحبًا ${name}! تم بدء المحادثة بنجاح 🎉`);
+                }).catch(err => {
+                    console.error('فشل بدء المحادثة:', err);
+                    showNotification('فشل بدء المحادثة. يرجى المحاولة مرة أخرى.');
+                });
+            } else {
+                if (!validateName(name) && !validatePhone(phone)) {
+                    alert('يرجى إدخال الاسم ورقم الهاتف بشكل صحيح لبدء المحادثة.');
+                } else if (!validateName(name)) {
+                    alert('يرجى إدخال اسمك الكامل بشكل صحيح (3 أحرف على الأقل).');
+                } else {
+                    alert('يرجى إدخال رقم هاتف مصري صحيح.');
+                }
+            }
+        }
+        startChatBtn.addEventListener('click', startChat);
+        customerNameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') startChat();
+        });
+        customerPhoneInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') startChat();
+        });
+        if (!customerName || !customerPhone) {
+            welcomeModal.classList.add('show');
+        } else {
+            initializeChat();
+        }
+        window.onload = () => {
+            if (customerName && customerPhone && conversationId) {
+                // ❌ تم تعطيل التمرير التلقائي
+                // messagesArea.scrollTop = messagesArea.scrollHeight;
+            }
+        };
+        window.addEventListener('resize', () => {
+            reactionsPopup.classList.remove('show');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- ترميز الأحرف -->
+    <meta charset="UTF-8">
+
+    <!-- توافق العرض على الجوال -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- عنوان الصفحة -->
+    <title>Jomaro Restaurant and Cafe - استمتع بأفضل المأكولات والمشروبات</title>
+
+    <!-- وصف الصفحة -->
+    <meta name="description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة. احجز طاولتك الآن!">
+
+    <!-- ميتا الروبوتات -->
+    <meta name="robots" content="index, follow">
+
+    <!-- رابط كانونيكال -->
+    <link rel="canonical" href="https://example.com/this-page">
+
+    <!-- أيقونة الموقع (Favicon) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+
+    <!-- Open Graph Tags (لمشاركة الصفحة على فيسبوك، واتساب، إلخ) -->
+    <meta property="og:title" content="Jomaro Restaurant and Cafe">
+    <meta property="og:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
+    <meta property="og:image" content="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <meta property="og:url" content="https://example.com/this-page">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jomaro Restaurant and Cafe">
+    <meta name="twitter:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
+    <meta name="twitter:image" content="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <meta name="twitter:site" content="@your_twitter_handle"> <!-- استبدل باسم حسابك على تويتر -->
+
+    <!-- لون الثيم للمتصفحات الحديثة -->
+    <meta name="theme-color" content="#d62828"> <!-- لون أحمر مناسب للمطاعم -->
+
+    <!-- اسم المؤلف أو الشركة -->
+    <meta name="author" content="Jomaro Restaurant and Cafe">
+
+    <!-- كلمات مفتاحية (اختياري - لا تؤثر في SEO لكن بعض الأنظمة تستخدمها) -->
+    <meta name="keywords" content="مطعم, كافيه, جومارو, طعام, مشروبات, حجز طاولة, مأكولات, شيشة, قهوة, حلويات">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة تحكم جومارو</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="script/adman.css">
+</head>
+<body>
+  <!-- صفحة الدخول -->
+  <div id="loginPage" class="login-container">
+    <div class="login-box">
+      <h2><i class="fas fa-lock"></i> دخول الإدارة</h2>
+      <div class="form-group">
+        <label>البريد الإلكتروني</label>
+        <input type="email" id="email" placeholder="admin@jomaro.com" />
+      </div>
+      <div class="form-group">
+        <label>كلمة المرور</label>
+        <input type="password" id="password" placeholder="********" />
+      </div>
+      <button class="btn" onclick="login()">تسجيل الدخول</button>
+      <div id="loginError" class="error"></div>
+    </div>
+  </div>
+  <!-- لوحة التحكم -->
+  <div id="dashboard" class="dashboard">
+    <div class="header">
+      <h1>لوحة تحكم جومارو</h1>
+      <!-- --- الزر الجديد المضاف --- -->
+      <!-- --- نهاية الزر الجديد --- -->
+      <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
+    </div>
+    <!-- معلومات التصحيح -->
+    <div class="debug-info" id="debugInfo">
+      حالة الاتصال: جاري التحقق...
+    </div>
+    <!-- التبويبات -->
+    <div class="tabs">
+      <button class="logout-btn" style="background: #000000; border-color: #D4AF37;" onclick="window.open('admin-dashboard.html', '_blank')"> الدردشة</button>
+      <button class="tab-btn" data-tab="categories">➕ الأقسام</button>
+      <button class="tab-btn active" data-tab="add-item">➕ إضافة صنف</button>
+      <button class="tab-btn" data-tab="manage-items">📋 إدارة الأصناف</button>
+      <button class="tab-btn" data-tab="orders">📦 الطلبات</button>
+      <button class="tab-btn" data-tab="promotions">🎯 العروض</button>
+      <button class="tab-btn" data-tab="fix-data">🔧 إصلاح البيانات</button>
+    </div>
+    <!-- 1. إدارة الأقسام -->
+    <div id="categories" class="tab-content">
+      <h2>إدارة الأقسام (رئيسية وفرعية)</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>اسم القسم الرئيسي الجديد</label>
+          <input type="text" id="mainCatName" placeholder="مثل: مأكولات، مشروبات" />
+        </div>
+        <div class="form-group">
+          <button class="btn" onclick="addMainCategory()">إضافة قسم رئيسي</button>
+        </div>
+      </div>
+      <hr style="border: 1px solid #444; margin: 20px 0;" />
+      <h3>إضافة قسم فرعي</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>اختر القسم الرئيسي</label>
+          <select id="mainCatSelect"></select>
+        </div>
+        <div class="form-group">
+          <label>اسم القسم الفرعي</label>
+          <input type="text" id="subCatName" placeholder="مثل: بيتزا، قهوة" />
+        </div>
+        <div class="form-group">
+          <button class="btn" onclick="addSubCategory()">إضافة القسم الفرعي</button>
+        </div>
+      </div>
+    </div>
+    <!-- 2. إضافة صنف جديد -->
+    <div id="add-item" class="tab-content active">
+      <h2>إضافة صنف جديد</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>القسم الرئيسي</label>
+          <select id="addItemMainCat" onchange="loadSubCategoriesForItem()"></select>
+        </div>
+        <div class="form-group">
+          <label>القسم الفرعي</label>
+          <select id="addItemSubCat"></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>الاسم (عربي)</label>
+          <input type="text" id="itemNameAr" />
+        </div>
+        <div class="form-group">
+          <label>الاسم (إنجليزي)</label>
+          <input type="text" id="itemNameEn" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>الوصف (عربي)</label>
+          <textarea id="itemDescAr"></textarea>
+        </div>
+        <div class="form-group">
+          <label>الوصف (إنجليزي)</label>
+          <textarea id="itemDescEn"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>السعر</label>
+          <input type="number" id="itemPrice" step="0.5" />
+        </div>
+        <div class="form-group">
+          <label>الخصم (%)</label>
+          <input type="number" id="itemDiscount" value="0" min="0" max="100" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>رابط الصورة</label>
+          <input type="text" id="itemImageURL" placeholder="https://example.com/image.jpg أو رابط جوجل دريف" />
+        </div>
+      </div>
+      <!-- --- زر واحد فقط لإضافة الصنف --- -->
+      <div class="form-row" style="margin-top: 30px; justify-content: center;">
+        <div class="form-group" style="flex: 1; min-width: 300px;">
+          <button class="btn" onclick="addItemOnly()" style="width: 100%;">
+            <i class="fas fa-plus"></i> إضافة الصنف
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 3. إدارة الأصناف -->
+    <div id="manage-items" class="tab-content">
+      <h2>تعديل أو حذف الأصناف</h2>
+      <div class="filter-section">
+        <h3 class="filter-title">الأقسام الرئيسية</h3>
+        <div class="filter-buttons" id="mainCategoriesFilter">
+          <button class="filter-btn active" data-category="">جميع الأقسام</button>
+        </div>
+        <h3 class="filter-title">الأقسام الفرعية</h3>
+        <div class="filter-buttons" id="subCategoriesFilter">
+          <button class="filter-btn active" data-subcategory="">جميع الفئات</button>
+        </div>
+        <!-- إضافة البحث والتوفر -->
+        <h3 class="filter-title">البحث والتوفر</h3>
+        <div class="search-availability">
+          <div class="form-group">
+            <label>البحث عن صنف</label>
+            <input type="text" id="searchInput" placeholder="ابحث بالاسم..." oninput="filterItems()">
+          </div>
+          <div class="form-group">
+            <label>التوفر</label>
+            <select id="availabilityFilter" onchange="filterItems()">
+              <option value="">الكل</option>
+              <option value="true">متوفر فقط</option>
+              <option value="false">غير متوفر</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div id="itemsContainer">
+        <div class="loading">جاري تحميل الأصناف...</div>
+      </div>
+    </div>
+    <!-- 4. الطلبات الواردة -->
+    <div id="orders" class="tab-content">
+      <h2>الطلبات الواردة</h2>
+      <div class="filter-section">
+        <div class="filter-buttons" id="statusFilter">
+          <button class="filter-btn active" data-status="">جميع الطلبات</button>
+          <button class="filter-btn" data-status="قيد التحضير">قيد التحضير</button>
+          <button class="filter-btn" data-status="جاهز للتقديم">جاهز</button>
+          <button class="filter-btn" data-status="تم التسليم">تم التسليم</button>
+        </div>
+      </div>
+      <div id="ordersContainer">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>الطلب</th>
+              <th>الوقت</th>
+              <th>الطاولة</th>
+              <th>الأصناف</th>
+              <th>الإجمالي</th>
+              <th>الحالة</th>
+              <th>الإجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody">
+            <tr><td colspan="7" style="text-align:center; padding: 20px;">جاري تحميل الطلبات...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- 5. إدارة العروض الترويجية -->
+    <div id="promotions" class="tab-content">
+      <h2>إضافة عرض ترويجي جديد</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>العنوان (عربي)</label>
+          <input type="text" id="promoTitleAr" placeholder="عرض خاص على هذا الصنف" />
+        </div>
+        <div class="form-group">
+          <label>العنوان (إنجليزي)</label>
+          <input type="text" id="promoTitleEn" placeholder="Special Offer on this item" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>النص (عربي)</label>
+          <textarea id="promoTextAr" placeholder="تفاصيل العرض بالعربي"></textarea>
+        </div>
+        <div class="form-group">
+          <label>النص (إنجليزي)</label>
+          <textarea id="promoTextEn" placeholder="Offer details in English"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>الشعار (Badge) - عربي</label>
+          <input type="text" id="promoBadgeAr" placeholder="خصم 50%" />
+        </div>
+        <div class="form-group">
+          <label>الشعار (Badge) - إنجليزي</label>
+          <input type="text" id="promoBadgeEn" placeholder="50% Off" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>رابط صورة العرض</label>
+          <input type="text" id="promoImageURL" placeholder="رابط صورة العرض (جوجل دريف أو رابط مباشر)" />
+        </div>
+        <div class="form-group">
+          <label>الترتيب</label>
+          <input type="number" id="promoOrder" value="0" min="0" />
+        </div>
+      </div>
+      <button class="btn" onclick="addPromotion()" style="width: 100%; margin: 20px 0;">
+        <i class="fas fa-tag"></i> إضافة العرض الترويجي
+      </button>
+      <hr style="border: 1px solid #444; margin: 30px 0;" />
+      <h3 style="margin: 2rem 0 1rem;">العروض الحالية</h3>
+      <!-- تم التعديل هنا: إضافة class="items-grid" لجعل العرض مرنًا -->
+      <div id="promotionsList" class="items-grid"></div>
+    </div>
+    <!-- 6. إصلاح البيانات -->
+    <div id="fix-data" class="tab-content">
+      <h2>إصلاح هيكلية البيانات</h2>
+      <p>يقوم هذا الزر بإصلاح أي مشاكل في هيكلية تخزين الأصناف.</p>
+      <button class="btn fix-data-btn" onclick="fixDataStructure()">
+        <i class="fas fa-tools"></i> إصلاح البيانات
+      </button>
+      <div id="fixDataResult" class="debug-info"></div>
+    </div>
+  </div>
+  <!-- نافذة التعديل المنبثقة -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeEditModal()">&times;</span>
+      <h2 class="modal-title">تعديل الصنف</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>القسم الرئيسي</label>
+          <select id="editMainCat" onchange="loadEditSubCategories()"></select>
+        </div>
+        <div class="form-group">
+          <label>القسم الفرعي</label>
+          <select id="editSubCat"></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>الاسم (عربي)</label>
+          <input type="text" id="editNameAr" />
+        </div>
+        <div class="form-group">
+          <label>الاسم (إنجليزي)</label>
+          <input type="text" id="editNameEn" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>الوصف (عربي)</label>
+          <textarea id="editDescAr"></textarea>
+        </div>
+        <div class="form-group">
+          <label>الوصف (إنجليزي)</label>
+          <textarea id="editDescEn"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>السعر</label>
+          <input type="number" id="editPrice" step="0.5" />
+        </div>
+        <div class="form-group">
+          <label>الخصم (%)</label>
+          <input type="number" id="editDiscount" min="0" max="100" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>رابط الصورة</label>
+          <input type="text" id="editImageURL" />
+        </div>
+        <div class="form-group">
+          <label>الحالة</label>
+          <select id="editAvailable">
+            <option value="true">متوفر</option>
+            <option value="false">غير متوفر</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <button class="btn" onclick="updateItem()">حفظ التعديلات</button>
+        </div>
+      </div>
+      <input type="hidden" id="editItemKey">
+      <input type="hidden" id="editOriginalMainCat">
+      <input type="hidden" id="editOriginalSubCat">
+    </div>
+  </div>
+  <!-- نافذة تعديل العرض -->
+  <div id="editPromoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeEditPromoModal()">&times;</span>
+      <h2 class="modal-title">تعديل العرض</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label>العنوان (عربي)</label>
+          <input type="text" id="editPromoTitleAr" />
+        </div>
+        <div class="form-group">
+          <label>العنوان (إنجليزي)</label>
+          <input type="text" id="editPromoTitleEn" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>النص (عربي)</label>
+          <textarea id="editPromoTextAr"></textarea>
+        </div>
+        <div class="form-group">
+          <label>النص (إنجليزي)</label>
+          <textarea id="editPromoTextEn"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>الشعار (عربي)</label>
+          <input type="text" id="editPromoBadgeAr" />
+        </div>
+        <div class="form-group">
+          <label>الشعار (إنجليزي)</label>
+          <input type="text" id="editPromoBadgeEn" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>رابط الصورة</label>
+          <input type="text" id="editPromoImageURL" placeholder="رابط صورة العرض (جوجل دريف أو رابط مباشر)" />
+        </div>
+        <div class="form-group">
+          <label>الترتيب</label>
+          <input type="number" id="editPromoOrder" min="0" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <button class="btn" onclick="updatePromotion()">تحديث العرض</button>
+        </div>
+      </div>
+      <input type="hidden" id="editPromoKey">
+    </div>
+  </div>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+  <script>
+    // ✅ تعريف المتغيرات أولًا
+    let allItemsData = {};
+    let selectedMainCategory = '';
+    let selectedSubCategory = '';
+    let auth, db;
+    // تهيئة Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDIs4dsxIk0xtuUaTGkIlVGKuFqwHBfr7g",
+      authDomain: "app-da684.firebaseapp.com",
+      databaseURL: "https://app-da684-default-rtdb.firebaseio.com",
+      projectId: "app-da684",
+      storageBucket: "app-da684.firebasestorage.app",
+      messagingSenderId: "204039458597",
+      appId: "1:204039458597:web:5be11d7494ac10cb3314cc"
+    };
+    try {
+      firebase.initializeApp(firebaseConfig);
+      auth = firebase.auth();
+      db = firebase.database();
+      console.log("Firebase initialized successfully");
+      updateDebugInfo("Firebase مهيأ بنجاح", "success");
+    } catch (error) {
+      console.error("Firebase initialization error:", error);
+      updateDebugInfo("خطأ في تهيئة Firebase: " + error.message, "error");
+    }
+    function updateDebugInfo(message, type = "info") {
+      const debugInfo = document.getElementById("debugInfo");
+      if (debugInfo) {
+        debugInfo.innerHTML = `حالة الاتصال: ${message}`;
+        debugInfo.style.color = type === "error" ? "red" : type === "success" ? "green" : "white";
+      }
+    }
+    // دالة تحويل روابط جوجل دريف إلى روابط مباشرة
+    function convertGoogleDriveURL(url) {
+      if (!url) return '';
+      // إذا كان الرابط يحتوي على معرف الملف مباشرة (مثل المثال الذي ذكرته)
+      if (url.includes('lh3.googleusercontent.com')) {
+        return url; // الرابط المباشر بالفعل
+      }
+      // إذا كان الرابط من نوع مشاركة جوجل دريف
+      if (url.includes('drive.google.com')) {
+        // استخراج معرف الملف من الرابط
+        const match = url.match(/\/d\/([^\/]+)/);
+        if (match && match[1]) {
+          return `https://lh3.googleusercontent.com/d/${match[1]}=s0`;
+        }
+        // محاولة أخرى لاستخراج المعرف من أنواع روابط أخرى
+        const altMatch = url.match(/id=([^&]+)/);
+        if (altMatch && altMatch[1]) {
+          return `https://lh3.googleusercontent.com/d/${altMatch[1]}=s0`;
+        }
+      }
+      // إذا لم يكن رابط جوجل دريف، إرجاع الرابط كما هو
+      return url;
+    }
+    // التبويبات
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.getAttribute('data-tab');
+        document.getElementById(tab).classList.add('active');
+        if (tab === 'categories') loadMainCategoriesForSub();
+        if (tab === 'manage-items') loadAllItems();
+        if (tab === 'orders') loadOrders();
+        if (tab === 'promotions') loadPromotions();
+      });
+    });
+    // تسجيل الدخول
+    function login() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const error = document.getElementById("loginError");
+      error.textContent = "";
+      if (!email || !password) {
+        error.textContent = "املأ جميع الحقول";
+        return;
+      }
+      updateDebugInfo("جاري تسجيل الدخول...");
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          loginPage.style.display = "none";
+          dashboard.style.display = "block";
+          loadMainCategoriesForSub();
+          loadMainCategoriesForItem();
+          loadAllItems();
+          checkDatabaseConnection();
+        })
+        .catch(err => {
+          error.textContent = "خطأ: " + err.message;
+          updateDebugInfo("خطأ في التسجيل: " + err.message, "error");
+        });
+    }
+    function logout() {
+      auth.signOut().then(() => {
+        dashboard.style.display = "none";
+        loginPage.style.display = "flex";
+        updateDebugInfo("تم تسجيل الخروج");
+      });
+    }
+    function checkDatabaseConnection() {
+      if (!db) return;
+      db.ref('.info/connected').on('value', (snapshot) => {
+        updateDebugInfo(snapshot.val() ? "متصل بقاعدة البيانات" : "غير متصل", snapshot.val() ? "success" : "error");
+      });
+    }
+    // دالة تحويل روابط جوجل دريف للعرض
+    function getDirectImageURL(url) {
+      if (!url) return 'https://via.placeholder.com/300x200/222/D4AF37?text=No+Image';
+      try {
+        if (url.includes('drive.google.com')) {
+          const idMatch = url.match(/\/d\/([^\/]+)/);
+          if (idMatch && idMatch[1]) {
+            return `https://drive.google.com/uc?export=view&id=${idMatch[1]}`;
+          }
+        }
+        return url;
+      } catch (e) {
+        return 'https://via.placeholder.com/300x200/222/D4AF37?text=Error';
+      }
+    }
+    // إضافة قسم رئيسي
+    function addMainCategory() {
+      const name = document.getElementById("mainCatName").value.trim();
+      if (!name) return alert("أدخل اسم القسم");
+      // التحقق من تسجيل الدخول قبل الكتابة
+      if (!auth.currentUser) {
+        alert("يجب تسجيل الدخول أولاً");
+        return;
+      }
+      db.ref('menuItems/' + name).set({ type: "mainCategory" })
+        .then(() => {
+          alert("تم الإضافة: " + name);
+          document.getElementById("mainCatName").value = "";
+          loadMainCategoriesForSub();
+          loadMainCategoriesForItem();
+        })
+        .catch(err => alert("خطأ: " + err.message));
+    }
+    // تحميل الأقسام الرئيسية
+    function loadMainCategoriesForSub() {
+      const select = document.getElementById("mainCatSelect");
+      select.innerHTML = "<option value=''>اختر قسم رئيسي</option>";
+      // يمكن تحميل الأقسام حتى لو لم يكن المستخدم مسجلاً (للقراءة العامة)
+      db.ref('menuItems').once('value').then(snapshot => {
+        snapshot.forEach(snap => {
+          if (snap.key !== 'type') {
+            const opt = document.createElement("option");
+            opt.value = snap.key;
+            opt.textContent = snap.key;
+            select.appendChild(opt);
+          }
+        });
+      }).catch(err => {
+        console.error("فشل تحميل الأقسام الرئيسية:", err);
+        alert("خطأ في تحميل الأقسام: " + err.message);
+      });
+    }
+    // إضافة قسم فرعي
+    function addSubCategory() {
+      const main = document.getElementById("mainCatSelect").value;
+      const sub = document.getElementById("subCatName").value.trim();
+      if (!main || !sub) return alert("اختر القسم الرئيسي وأدخل اسم القسم الفرعي");
+      // التحقق من تسجيل الدخول قبل الكتابة
+      if (!auth.currentUser) {
+        alert("يجب تسجيل الدخول أولاً");
+        return;
+      }
+      db.ref('menuItems/' + main + '/' + sub).set({ type: "subCategory" })
+        .then(() => {
+          alert("تم إضافة: " + sub);
+          document.getElementById("subCatName").value = "";
+          loadMainCategoriesForItem();
+        })
+        .catch(err => alert("خطأ: " + err.message));
+    }
+    // تحميل الأقسام عند إضافة صنف
+    function loadMainCategoriesForItem() {
+      const select = document.getElementById("addItemMainCat");
+      select.innerHTML = "<option value=''>اختر قسم رئيسي</option>";
+      // يمكن تحميل الأقسام حتى لو لم يكن المستخدم مسجلاً (للقراءة العامة)
+      db.ref('menuItems').once('value').then(snapshot => {
+        snapshot.forEach(snap => {
+          if (snap.key !== 'type') {
+            const opt = document.createElement("option");
+            opt.value = snap.key;
+            opt.textContent = snap.key;
+            select.appendChild(opt);
+          }
+        });
+        loadSubCategoriesForItem();
+      }).catch(err => {
+        console.error("فشل تحميل الأقسام للإضافة:", err);
+      });
+    }
+    function loadSubCategoriesForItem() {
+      const main = document.getElementById("addItemMainCat").value;
+      const select = document.getElementById("addItemSubCat");
+      select.innerHTML = "<option value=''>اختر قسم فرعي</option>";
+      if (!main) return;
+      // يمكن تحميل الأقسام حتى لو لم يكن المستخدم مسجلاً (للقراءة العامة)
+      db.ref('menuItems/' + main).once('value').then(snapshot => {
+        snapshot.forEach(subSnap => {
+          if (subSnap.key !== 'type') {
+            const opt = document.createElement("option");
+            opt.value = subSnap.key;
+            opt.textContent = subSnap.key;
+            select.appendChild(opt);
+          }
+        });
+      }).catch(err => {
+        console.error("فشل تحميل الأقسام الفرعية:", err);
+      });
+    }
+    // --- دالة إضافة صنف فقط --- //
+    function addItemOnly() {
+      const mainCat = document.getElementById("addItemMainCat").value;
+      const subCat = document.getElementById("addItemSubCat").value;
+      const nameAr = document.getElementById("itemNameAr").value.trim();
+      const nameEn = document.getElementById("itemNameEn").value.trim();
+      const descAr = document.getElementById("itemDescAr").value;
+      const descEn = document.getElementById("itemDescEn").value;
+      const price = parseFloat(document.getElementById("itemPrice").value);
+      const discount = parseInt(document.getElementById("itemDiscount").value) || 0;
+      let imageURL = document.getElementById("itemImageURL").value.trim();
+      if (!mainCat || !subCat || !nameAr || !nameEn || isNaN(price)) {
+        return alert("املأ جميع الحقول المطلوبة");
+      }
+      // التحقق من تسجيل الدخول قبل الكتابة
+      if (!auth.currentUser) {
+        alert("يجب تسجيل الدخول أولاً");
+        return;
+      }
+      imageURL = convertGoogleDriveURL(imageURL);
+      const newItem = {
+        nameAr, nameEn,
+        descriptionAr: descAr,
+        descriptionEn: descEn,
+        price,
+        discount,
+        imageURL,
+        available: true,
+        categoryAr: subCat,
+        categoryEn: getEnglishCategory(subCat),
+        createdAt: firebase.database.ServerValue.TIMESTAMP
+      };
+      const newItemKey = firebase.database().ref().child('menuItems').push().key;
+      const updates = {};
+      updates[`menuItems/${mainCat}/${subCat}/${newItemKey}`] = newItem;
+      db.ref().update(updates)
+        .then(() => {
+          alert("تم إضافة الصنف بنجاح");
+          // مسح الحقول
+          document.getElementById("itemNameAr").value = "";
+          document.getElementById("itemNameEn").value = "";
+          document.getElementById("itemDescAr").value = "";
+          document.getElementById("itemDescEn").value = "";
+          document.getElementById("itemPrice").value = "";
+          document.getElementById("itemDiscount").value = "0";
+          document.getElementById("itemImageURL").value = "";
+        })
+        .catch(err => {
+          console.error("خطأ في إضافة الصنف:", err);
+          alert("خطأ: " + err.message);
+        });
+    }
+    // تحميل الأصناف
+    function loadAllItems() {
+      const container = document.getElementById("itemsContainer");
+      container.innerHTML = '<div class="loading">جاري التحميل...</div>';
+      // يمكن تحميل الأصناف حتى لو لم يكن المستخدم مسجلاً (للقراءة العامة)
+      db.ref('menuItems').once('value')
+        .then(snapshot => {
+          const data = snapshot.val();
+          if (!data) {
+            container.innerHTML = '<p class="no-items">لا توجد أصناف بعد.</p>';
+            allItemsData = {};
+            renderFilterButtons();
+            return;
+          }
+          allItemsData = data;
+          renderFilterButtons();
+          filterItems();
+        })
+        .catch(err => {
+          console.error("خطأ في تحميل الأصناف:", err);
+          container.innerHTML = `<div class="error">فشل التحميل: ${err.message}</div>`;
+        });
+    }
+    function renderFilterButtons() {
+      const mainFilter = document.getElementById('mainCategoriesFilter');
+      const subFilter = document.getElementById('subCategoriesFilter');
+      mainFilter.innerHTML = '<button class="filter-btn active" data-category="">جميع الأقسام</button>';
+      subFilter.innerHTML = '<button class="filter-btn active" data-subcategory="">جميع الفئات</button>';
+      Object.keys(allItemsData).forEach(cat => {
+        if (cat !== 'type') {
+          const btn = document.createElement('button');
+          btn.className = 'filter-btn';
+          btn.setAttribute('data-category', cat);
+          btn.textContent = cat;
+          btn.onclick = () => filterByMainCategory(cat);
+          mainFilter.appendChild(btn);
+        }
+      });
+    }
+    function filterByMainCategory(mainCat) {
+      selectedMainCategory = mainCat;
+      selectedSubCategory = '';
+      document.querySelectorAll('#mainCategoriesFilter .filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-category') === mainCat);
+      });
+      const subFilter = document.getElementById('subCategoriesFilter');
+      subFilter.innerHTML = '<button class="filter-btn active" data-subcategory="">جميع الفئات</button>';
+      const mainCatData = allItemsData[mainCat] || {};
+      Object.keys(mainCatData).forEach(sub => {
+        if (sub !== 'type') {
+          const btn = document.createElement('button');
+          btn.className = 'filter-btn';
+          btn.setAttribute('data-subcategory', sub);
+          btn.textContent = sub;
+          btn.onclick = () => filterBySubCategory(sub);
+          subFilter.appendChild(btn);
+        }
+      });
+      filterItems();
+    }
+    function filterBySubCategory(subCat) {
+      selectedSubCategory = subCat;
+      document.querySelectorAll('#subCategoriesFilter .filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-subcategory') === subCat);
+      });
+      filterItems();
+    }
+    function filterItems() {
+      const container = document.getElementById("itemsContainer");
+      const searchTerm = document.getElementById("searchInput")?.value.trim().toLowerCase() || '';
+      const availabilityFilter = document.getElementById("availabilityFilter")?.value; // "" | "true" | "false"
+      container.innerHTML = '';
+      let hasItems = false;
+      Object.keys(allItemsData).forEach(mainCat => {
+        if (mainCat === 'type') return;
+        if (!selectedMainCategory || mainCat === selectedMainCategory) {
+          const mainCatData = allItemsData[mainCat];
+          let mainHasItems = false;
+          const mainDiv = document.createElement('div');
+          Object.keys(mainCatData).forEach(subCat => {
+            if (subCat === 'type') return;
+            if (!selectedSubCategory || subCat === selectedSubCategory) {
+              const items = mainCatData[subCat];
+              if (!items || typeof items !== 'object') return;
+              let subHasItems = false;
+              const subHeader = document.createElement('h3');
+              subHeader.className = 'category-header';
+              subHeader.textContent = `${subCat} (تحت: ${mainCat})`;
+              const grid = document.createElement('div');
+              grid.className = 'items-grid';
+              Object.keys(items).forEach(key => {
+                if (key === 'type') return;
+                const item = items[key];
+                if (typeof item !== 'object' || !item.nameAr) return;
+                // التحقق من البحث
+                const matchesSearch = 
+                  !searchTerm || 
+                  item.nameAr.toLowerCase().includes(searchTerm) || 
+                  item.nameEn.toLowerCase().includes(searchTerm);
+                // التحقق من التوفر
+                const matchesAvailability = 
+                  availabilityFilter === "" || 
+                  item.available?.toString() === availabilityFilter;
+                if (matchesSearch && matchesAvailability) {
+                  const card = createItemCard(mainCat, subCat, key, item);
+                  grid.appendChild(card);
+                  hasItems = true;
+                  mainHasItems = true;
+                  subHasItems = true;
+                }
+              });
+              if (subHasItems) {
+                mainDiv.appendChild(subHeader);
+                mainDiv.appendChild(grid);
+              }
+            }
+          });
+          if (mainHasItems) container.appendChild(mainDiv);
+        }
+      });
+      if (!hasItems) {
+        container.innerHTML = "<p class='no-items'>لا توجد أصناف مطابقة للبحث أو الفلترة.</p>";
+      }
+    }
+    function createItemCard(mainCat, subCat, key, item) {
+      const card = document.createElement('div');
+      card.className = 'item-card';
+      const img = getDirectImageURL(item.imageURL);
+      card.innerHTML = `
+        <img src="${img}" alt="${item.nameAr}" class="item-image" onerror="this.src='https://via.placeholder.com/300x200/222/D4AF37?text=No+Image'">
+        <div class="item-details">
+          <div class="item-name">${item.nameAr}</div>
+          <div class="item-description">${item.descriptionAr || 'لا يوجد وصف'}</div>
+          <div class="item-price">السعر: ${item.price} ج.م</div>
+          ${item.discount > 0 ? `<div class="item-discount">الخصم: ${item.discount}%</div>` : ''}
+          <div class="item-actions">
+            <button class="action-btn edit-btn" onclick="openEditModal('${mainCat}', '${subCat}', '${key}', ${JSON.stringify(item).replace(/"/g, '&quot;')})">
+              <i class="fas fa-edit"></i> تعديل
+            </button>
+            <button class="action-btn delete-btn" onclick="deleteItem('${mainCat}', '${subCat}', '${key}')">
+              <i class="fas fa-trash"></i> حذف
+            </button>
+          </div>
+        </div>
+      `;
+      return card;
+    }
+    // إدارة الطلبات
+    function loadOrders() {
+      const tbody = document.getElementById("ordersTableBody");
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 20px;">جاري تحميل الطلبات...</td></tr>';
+      // التحقق من تسجيل الدخول قبل تحميل الطلبات (للخصوصية)
+      if (!auth.currentUser) {
+        tbody.innerHTML = '<tr><td colspan="7" style="color:red; text-align:center;">يجب تسجيل الدخول لرؤية الطلبات.</td></tr>';
+        return;
+      }
+      db.ref('orders').orderByChild('timestamp').once('value')
+        .then(snapshot => {
+          const orders = snapshot.val();
+          tbody.innerHTML = '';
+          if (!orders || Object.keys(orders).length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 20px;">لا توجد طلبات.</td></tr>';
+            return;
+          }
+          Object.entries(orders).reverse().forEach(([orderId, order]) => {
+            const date = order.timestamp ? new Date(order.timestamp).toLocaleString('ar') : 'غير معروف';
+            const itemsHTML = (order.items || []).map(item => `${item.nameAr} × ${item.quantity}`).join('<br>');
+            const tr = document.createElement('tr');
+            tr.setAttribute('data-order-id', orderId);
+            tr.setAttribute('data-status', order.status || '');
+            tr.innerHTML = `
+              <td>${orderId.replace('JMR-', '')}</td>
+              <td>${date}</td>
+              <td style="font-weight: bold; color: var(--primary);">${order.tableNumber || '?'}</td>
+              <td style="font-size: 0.9rem;">${itemsHTML}</td>
+              <td>${(order.total || 0).toFixed(2)} ج.م</td>
+              <td>
+                <select class="order-status-select" onchange="updateOrderStatus('${orderId}', this.value)">
+                  <option value="قيد التحضير" ${order.status === 'قيد التحضير' ? 'selected' : ''}>قيد التحضير</option>
+                  <option value="جاهز للتقديم" ${order.status === 'جاهز للتقديم' ? 'selected' : ''}>جاهز</option>
+                  <option value="تم التسليم" ${order.status === 'تم التسليم' ? 'selected' : ''}>تم التسليم</option>
+                </select>
+              </td>
+              <td>
+                <button class="btn" style="background:var(--success)" onclick="completeOrder('${orderId}')">تم الاستلام</button>
+              </td>
+            `;
+            tbody.appendChild(tr);
+          });
+          filterOrdersByStatus();
+        })
+        .catch(err => {
+          tbody.innerHTML = `<tr><td colspan="7" style="color:red; text-align:center;">خطأ: ${err.message}</td></tr>`;
+        });
+    }
+    function updateOrderStatus(orderId, newStatus) {
+      // التحقق من تسجيل الدخول قبل التحديث
+      if (!auth.currentUser) {
+        alert("يجب تسجيل الدخول أولاً");
+        return;
+      }
+      db.ref('orders/' + orderId).update({ status: newStatus })
+        .then(() => {
+          if (newStatus === "تم التسليم") {
+            const row = document.querySelector(`tr[data-order-id="${orderId}"]`);
+            if (row) {
+              row.style.transition = "opacity 0.5s";
+              row.style.opacity = "0";
+              setTimeout(() => row.remove(), 500);
+            }
+          }
+          showNotification("تم التحديث");
+        })
+        .catch(err => alert("خطأ: " + err.message));
+    }
+    function completeOrder(orderId) {
+      if (!confirm("هل تأكد من استلام هذا الطلب؟")) return;
+      // التحقق من تسجيل الدخول قبل التحديث
+      if (!auth.currentUser) {
+        alert("يجب تسجيل الدخول أولاً");
+        return;
+      }
+      db.ref('orders/' + orderId).update({ status: "تم التسليم" })
+        .then(() => {
+          const row = document.querySelector(`tr[data-order-id="${orderId}"]`);
+          if (row) {
+            row.style.transition = "opacity 0.5s";
+            row.style.opacity = "0";
+            setTimeout(() => row.remove(), 500);
+          }
+          showNotification("تم التسليم");
+        })
+        .catch(err => alert("خطأ: " + err.message));
+    }
+    function filterOrdersByStatus() {
+      const selectedStatus = document.querySelector('#statusFilter .filter-btn.active')?.getAttribute('data-status') || '';
+      document.querySelectorAll('#ordersTableBody tr').forEach(tr => {
+        const status = tr.getAttribute('data-status');
+        tr.style.display = !selectedStatus || selectedStatus === status ? '' : 'none';
+      });
+    }
+    // إعداد تصفية الطلبات
+    document.querySelectorAll('#statusFilter .filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#statusFilter .filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterOrdersByStatus();
+      });
+    });
+    function showNotification(message) {
+      const n = document.createElement('div');
+      n.textContent = message;
+      n.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#D4AF37;color:#000;padding:1rem 2rem;border-radius:30px;z-index:1000;animation:fadeInOut 3s forwards;';
+      document.body.appendChild(n);
+      setTimeout(() => n.remove(), 3000);
+    }
+    function openEditModal(mainCat, subCat, key, item) {
+      document.getElementById('editOriginalMainCat').value = mainCat;
+      document.getElementById('editOriginalSubCat').value = subCat;
+      document.getElementById('editItemKey').value = key;
+      document.getElementById('editNameAr').value = item.nameAr || '';
+      document.getElementById('editNameEn').value = item.nameEn || '';
+      document.getElementById('editDescAr').value = item.descriptionAr || '';
+      document.getElementById('editDescEn').value = item.descriptionEn || '';
+      document.getElementById('editPrice').value = item.price || '';
+      document.getElementById('editDiscount').value = item.discount || 0;
+      document.getElementById('editImageURL').value = item.imageURL || '';
+      document.getElementById('editAvailable').value = item.available ? 'true' : 'false';
+      const mainSelect = document.getElementById('editMainCat');
+      mainSelect.innerHTML = '<option value="">اختر قسم رئيسي</option>';
+      // يمكن تحميل الأقسام حتى لو لم يكن المستخدم مسجلاً (للقراءة العامة)
+      db.ref('menuItems').once('value').then(snapshot => {
+        snapshot.forEach(snap => {
+          if (snap.key !== 'type') {
+            const opt = document.createElement('option');
+            opt.value = snap.key;
+            opt.textContent = snap.key;
+            opt.selected = (snap.key === mainCat);
+            mainSelect.appendChild(opt);
+          }
+        });
+        loadEditSubCategories(subCat);
+      });
+      document.getElementById('editModal').style.display = 'block';
+    }
+    function loadEditSubCategories(subCatToSelect) {
+      const mainCat = document.getElementById('editMainCat').value;
+      const subSelect = document.getElementById('editSubCat');
+      subSelect.innerHTML = '<option value="">اختر قسم فرعي</option>';
+      if (!mainCat) return;
+      // يمكن تحميل الأقسام حتى لو لم يكن المستخدم مسجلاً (للقراءة العامة)
+      db.ref('menuItems/' + mainCat).once('value').then(snapshot => {
+        snapshot.forEach(subSnap => {
+          if (subSnap.key !== 'type') {
+            const opt = document.createElement('option');
+            opt.value = subSnap.key;
+            opt.textContent = subSnap.key;
+            if (subCatToSelect && subSnap.key === subCatToSelect) opt.selected = true;
+            subSelect.appendChild(opt);
+          }
+        });
+      });
+    }
+    function closeEditModal() {
+      document.getElementById('editModal').style.display = 'none';
+    }
+    // تحديث الصنف مع تحويل رابط الصورة
+    function updateItem() {
+      const origMain = document.getElementById('editOriginalMainCat').value;
+      const origSub = document.getElementById('editOriginalSubCat').value;
+      const key = document.getElementById('editItemKey').value;
+      const mainCat = document.getElementById('editMainCat').value;
+      const subCat = document.getElementById('editSubCat').value;
+      const nameAr = document.getElementById('editNameAr').value.trim();
+      const nameEn = document.getElementById('editNameEn').value.trim();
+      const price = parseFloat(document.getElementById('editPrice').value);
+      let imageURL = document.getElementById('editImageURL').value.trim();
+      if (!mainCat || !subCat || !nameAr || !nameEn || isNaN(price)) return alert("املأ جميع الحقول");
+      // التحقق من تسجيل الدخول قبل التحديث
+      if (!auth.currentUser) {
+        alert("يجب تسجيل الدخول أولاً");
+        return;
+      }
+      // تحويل رابط جوجل دريف إلى رابط مباشر إذا كان من جوجل دريف
+      imageURL = convertGoogleDriveURL(imageURL);
+      const updated = {
+        nameAr, nameEn,
+        descriptionAr: document.getElementById('editDescAr').value,
+        descriptionEn: document.getElementById('editDescEn').value,
+        price, 
+        discount: parseInt(document.getElementById('editDiscount').value) || 0,
+        imageURL: imageURL,
+        available: document.getElementById('editAvailable').value === 'true',
+        categoryAr: subCat,
+        categoryEn: getEnglishCategory(subCat)
+      };
+      if (origMain !== mainCat || origSub !== subCat) {
+        db.ref('menuItems/' + origMain + '/' + origSub + '/' + key).remove()
+          .then(() => db.ref('menuItems/' + mainCat + '/' + subCat + '/' + key).set(updated))
+          .then(() => { 
+            alert("تم النقل والتحديث"); 
+            closeEditModal(); 
+            loadAllItems(); 
+          })
+          .catch(err => alert("خطأ: " + err.message));
+      } else {
+        db.ref('menuItems/' + mainCat + '/' + subCat + '/' + key).update(updated)
+          .then(() => { 
+            alert("تم التحديث"); 
+            closeEditModal(); 
+            loadAllItems(); 
+          })
+          .catch(err => alert("خطأ: " + err.message));
+      }
+    }
+    function deleteItem(mainCat, subCat, key) {
+      if (confirm("حذف هذا الصنف؟")) {
+        // التحقق من تسجيل الدخول قبل الحذف
+        if (!auth.currentUser) {
+          alert("يجب تسجيل الدخول أولاً");
+          return;
+        }
+        db.ref('menuItems/' + mainCat + '/' + subCat + '/' + key).remove()
+          .then(() => { 
+            alert("تم الحذف"); 
+            loadAllItems(); 
+          })
+          .catch(err => alert("خطأ: " + err.message));
+      }
+    }
+    // --- إدارة العروض ---
+    function addPromotion() {
+      const titleAr = document.getElementById("promoTitleAr").value.trim();
+      const titleEn = document.getElementById("promoTitleEn").value.trim();
+      const textAr = document.getElementById("promoTextAr").value.trim();
+      const textEn = document.getElementById("promoTextEn").value.trim();
+      const badgeAr = document.getElementById("promoBadgeAr").value.trim();
+      const badgeEn = document.getElementById("promoBadgeEn").value.trim();
+      let image = document.getElementById("promoImageURL").value.trim();
+      const order = parseInt(document.getElementById("promoOrder").value) || 0;
+      if (!titleAr || !titleEn || !textAr || !textEn || !image) {
+        alert("املأ الحقول المطلوبة");
+        return;
+      }
+      // التحقق من تسجيل الدخول قبل الكتابة
+      if (!auth.currentUser) {
+        alert("يجب تسجيل الدخول أولاً");
+        return;
+      }
+      // تحويل رابط جوجل دريف إلى رابط مباشر إذا كان من جوجل دريف
+      image = convertGoogleDriveURL(image);
+      const promo = {
+        titleAr, titleEn,
+        textAr, textEn,
+        badgeAr, badgeEn,
+        image,
+        order,
+        createdAt: firebase.database.ServerValue.TIMESTAMP
+      };
+      const newKey = db.ref().push().key;
+      db.ref('promotions/' + newKey).set(promo)
+        .then(() => {
+          alert("تم إضافة العرض");
+          document.getElementById("promoTitleAr").value = "";
+          document.getElementById("promoTitleEn").value = "";
+          document.getElementById("promoTextAr").value = "";
+          document.getElementById("promoTextEn").value = "";
+          document.getElementById("promoBadgeAr").value = "";
+          document.getElementById("promoBadgeEn").value = "";
+          document.getElementById("promoImageURL").value = "";
+          document.getElementById("promoOrder").value = "0";
+          loadPromotions();
+        })
+        .catch(err => alert("خطأ: " + err.message));
+    }
+    function loadPromotions() {
+      const container = document.getElementById("promotionsList");
+      container.innerHTML = '<div class="loading">جاري التحميل...</div>';
+      // يمكن تحميل العروض حتى لو لم يكن المستخدم مسجلاً (للقراءة العامة)
+      db.ref('promotions').orderByChild('order').once('value').then(snapshot => {
+        const data = snapshot.val();
+        if (!data) {
+          container.innerHTML = '<div class="debug-info">لا توجد عروض</div>';
+          return;
+        }
+        container.innerHTML = '';
+        Object.keys(data).forEach(key => {
+          const promo = data[key];
+          const div = document.createElement('div');
+          div.className = 'item-card';
+          div.innerHTML = `
+            <img src="${getDirectImageURL(promo.image)}" alt="${promo.titleAr}" class="item-image" onerror="this.src='https://via.placeholder.com/300x200/222/D4AF37?text=No+Image'">
+            <div class="item-details">
+              <div class="item-name">${promo.titleAr}</div>
+              <div class="item-description">${promo.textAr}</div>
+              ${promo.badgeAr ? `<div class="promo-badge">${promo.badgeAr}</div>` : ''}
+              <div class="item-price">الترتيب: ${promo.order}</div>
+            </div>
+            <div class="item-actions">
+              <button class="action-btn edit-btn" onclick="openEditPromoModal('${key}', ${JSON.stringify(promo).replace(/"/g, '&quot;')})">
+                <i class="fas fa-edit"></i> تعديل
+              </button>
+              <button class="action-btn delete-btn" onclick="deletePromotion('${key}')">
+                <i class="fas fa-trash"></i> حذف
+              </button>
+            </div>
+          `;
+          container.appendChild(div);
+        });
+      }).catch(error => {
+        console.error("Error loading promotions:", error);
+        container.innerHTML = `<div class="error">خطأ في تحميل العروض: ${error.message}</div>`;
+      });
+    }
+    function openEditPromoModal(key, promo) {
+      document.getElementById("editPromoKey").value = key;
+      document.getElementById("editPromoTitleAr").value = promo.titleAr || '';
+      document.getElementById("editPromoTitleEn").value = promo.titleEn || '';
+      document.getElementById("editPromoTextAr").value = promo.textAr || '';
+      document.getElementById("editPromoTextEn").value = promo.textEn || '';
+      document.getElementById("editPromoBadgeAr").value = promo.badgeAr || '';
+      document.getElementById("editPromoBadgeEn").value = promo.badgeEn || '';
+      document.getElementById("editPromoImageURL").value = promo.image || '';
+      document.getElementById("editPromoOrder").value = promo.order || 0;
+      document.getElementById("editPromoModal").style.display = 'block';
+    }
+    function closeEditPromoModal() {
+      document.getElementById("editPromoModal").style.display = 'none';
+    }
+    function updatePromotion() {
+      const key = document.getElementById("editPromoKey").value;
+      const titleAr = document.getElementById("editPromoTitleAr").value.trim();
+      const titleEn = document.getElementById("editPromoTitleEn").value.trim();
+      const textAr = document.getElementById("editPromoTextAr").value.trim();
+      const textEn = document.getElementById("editPromoTextEn").value.trim();
+      const badgeAr = document.getElementById("editPromoBadgeAr").value.trim();
+      const badgeEn = document.getElementById("editPromoBadgeEn").value.trim();
+      let image = document.getElementById("editPromoImageURL").value.trim();
+      const order = parseInt(document.getElementById("editPromoOrder").value) || 0;
+      if (!titleAr || !titleEn || !textAr || !textEn || !image) {
+        alert("املأ الحقول المطلوبة");
+        return;
+      }
+      // التحقق من تسجيل الدخول قبل التحديث
+      if (!auth.currentUser) {
+        alert("يجب تسجيل الدخول أولاً");
+        return;
+      }
+      // تحويل رابط جوجل دريف إلى رابط مباشر إذا كان من جوجل دريف
+      image = convertGoogleDriveURL(image);
+      const updates = {
+        titleAr, titleEn,
+        textAr, textEn,
+        badgeAr, badgeEn,
+        image,
+        order
+      };
+      db.ref('promotions/' + key).update(updates)
+        .then(() => {
+          alert("تم تحديث العرض");
+          closeEditPromoModal();
+          loadPromotions();
+        })
+        .catch(err => alert("خطأ: " + err.message));
+    }
+    function deletePromotion(key) {
+      if (confirm("حذف هذا العرض؟")) {
+        // التحقق من تسجيل الدخول قبل الحذف
+        if (!auth.currentUser) {
+          alert("يجب تسجيل الدخول أولاً");
+          return;
+        }
+        db.ref('promotions/' + key).remove()
+          .then(() => {
+            alert("تم الحذف");
+            loadPromotions();
+          })
+          .catch(err => alert("خطأ: " + err.message));
+      }
+    }
+    function fixDataStructure() {
+      const result = document.getElementById('fixDataResult');
+      result.innerHTML = "جاري الإصلاح...";
+      // التحقق من تسجيل الدخول قبل الإصلاح (عملية كتابة)
+      if (!auth.currentUser) {
+        alert("يجب تسجيل الدخول أولاً");
+        return;
+      }
+      db.ref('menuItems').once('value').then(snapshot => {
+        const data = snapshot.val() || {};
+        let fixed = 0;
+        Object.keys(data).forEach(main => {
+          if (main !== 'type') {
+            Object.keys(data[main]).forEach(sub => {
+              if (sub !== 'type' && data[main][sub] && data[main][sub].nameAr !== undefined) {
+                const itemKey = db.ref().push().key;
+                const updates = {};
+                updates[`menuItems/${main}/${sub}/${itemKey}`] = data[main][sub];
+                updates[`menuItems/${main}/${sub}/type`] = "subCategory";
+                Object.keys(data[main][sub]).forEach(k => {
+                  if (k !== 'type' && k !== 'createdAt') updates[`menuItems/${main}/${sub}/${k}`] = null;
+                });
+                db.ref().update(updates).then(() => fixed++);
+              }
+            });
+          }
+        });
+        setTimeout(() => {
+          result.innerHTML = `تم إصلاح ${fixed} من العناصر.`;
+        }, 1000);
+      });
+    }
+    // دالة مساعدة للحصول على اسم القسم بالإنجليزية
+    function getEnglishCategory(arabicCategory) {
+      const categoryMap = {
+        'مأكولات': 'Food',
+        'مشروبات': 'Drinks',
+        'حلويات': 'Desserts',
+        'مقبلات': 'Appetizers',
+        'سلطات': 'Salads',
+        'بيتزا': 'Pizza',
+        'برجر': 'Burger',
+        'معجنات': 'Pastries',
+        'قهوة': 'Coffee',
+        'عصائر': 'Juices',
+        'شاي': 'Tea'
+      };
+      return categoryMap[arabicCategory] || arabicCategory;
+    }
+    // التعامل مع حالة المصادقة
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        loginPage.style.display = "none";
+        dashboard.style.display = "block";
+        loadMainCategoriesForSub();
+        loadMainCategoriesForItem();
+        loadAllItems();
+        checkDatabaseConnection();
+      } else {
+        dashboard.style.display = "none";
+        loginPage.style.display = "flex";
+        updateDebugInfo("يرجى تسجيل الدخول");
+      }
+    });
+    // إغلاق النوافذ المنبثقة بالنقر خارجها
+    window.onclick = e => {
+      if (e.target === document.getElementById('editModal')) closeEditModal();
+      if (e.target === document.getElementById('editPromoModal')) closeEditPromoModal();
+    };
+  </script>
+</body>
+</html>

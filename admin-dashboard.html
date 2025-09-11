@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+ <!-- ترميز الأحرف -->
+    <meta charset="UTF-8">
+
+    <!-- توافق العرض على الجوال -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- عنوان الصفحة -->
+    <title>Jomaro Restaurant and Cafe - استمتع بأفضل المأكولات والمشروبات</title>
+
+    <!-- وصف الصفحة -->
+    <meta name="description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة. احجز طاولتك الآن!">
+
+    <!-- ميتا الروبوتات -->
+    <meta name="robots" content="index, follow">
+
+    <!-- رابط كانونيكال -->
+    <link rel="canonical" href="https://example.com/this-page">
+
+    <!-- أيقونة الموقع (Favicon) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+
+    <!-- Open Graph Tags (لمشاركة الصفحة على فيسبوك، واتساب، إلخ) -->
+    <meta property="og:title" content="Jomaro Restaurant and Cafe">
+    <meta property="og:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
+    <meta property="og:image" content="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <meta property="og:url" content="https://example.com/this-page">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jomaro Restaurant and Cafe">
+    <meta name="twitter:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
+    <meta name="twitter:image" content="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <meta name="twitter:site" content="@your_twitter_handle"> <!-- استبدل باسم حسابك على تويتر -->
+
+    <!-- لون الثيم للمتصفحات الحديثة -->
+    <meta name="theme-color" content="#d62828"> <!-- لون أحمر مناسب للمطاعم -->
+
+    <!-- اسم المؤلف أو الشركة -->
+    <meta name="author" content="Jomaro Restaurant and Cafe">
+
+    <!-- كلمات مفتاحية (اختياري - لا تؤثر في SEO لكن بعض الأنظمة تستخدمها) -->
+    <meta name="keywords" content="مطعم, كافيه, جومارو, طعام, مشروبات, حجز طاولة, مأكولات, شيشة, قهوة, حلويات">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام الدردشة - جومارو</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="script/admin-dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>لوحة تحكم الدردشة</h2>
+                <div class="sidebar-actions">
+                    <button class="delete-all-btn" id="deleteAllConversations" title="حذف جميع المحادثات">
+                        <i class="fas fa-trash-alt"></i> حذف الكل
+                    </button>
+                </div>
+            </div>
+            <div class="online-status" id="adminStatus">
+                <div class="status-dot"></div>
+                <span>أنت متصل</span>
+            </div>
+            <div class="customers-list" id="customersList">
+                <!-- سيتم ملؤه تلقائيًا -->
+            </div>
+        </div>
+        <div class="main-chat">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <h1 id="currentCustomerName">اختر عميلًا للدردشة</h1>
+                    <div class="customer-details" id="customerDetails">
+                        <!-- سيتم ملؤه عند اختيار عميل -->
+                         <div class="tabs">
+                            <button class="tab-btn"  onclick="window.open('adman.html', '_blank')">لوحة التحكم</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button class="control-btn" id="toggleOnline" title="تغيير حالتك">
+                        <i class="fas fa-toggle-on"></i>
+                    </button>
+                    <button class="control-btn" id="refreshBtn" title="تحديث القائمة">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="messages-area" id="messagesArea">
+                <div class="no-conversation">
+                    <div>
+                        <i class="fas fa-comments"></i>
+                        <p>لا توجد محادثة مختارة</p>
+                        <p>الرجاء اختيار عميل من القائمة الجانبية</p>
+                    </div>
+                </div>
+            </div>
+            <div class="typing-indicator" id="typingIndicator">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="input-area">
+                <div class="reply-preview" id="replyPreview">
+                    <span id="replyPreviewText">الرد على: ...</span>
+                    <span class="cancel-reply" id="cancelReply">✕</span>
+                </div>
+                <div class="input-row">
+                    <input type="text" id="messageInput" placeholder="اكتب ردك هنا..." maxlength="500" disabled>
+                    <button id="sendButton" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <script>
+     // تكوين Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyDIs4dsxIk0xtuUaTGkIlVGKuFqwHBfr7g",
+    authDomain: "app-da684.firebaseapp.com",
+    projectId: "app-da684",
+    storageBucket: "app-da684.firebasestorage.app",
+    messagingSenderId: "204039458597",
+    appId: "1:204039458597:web:5be11d7494ac10cb3314cc"
+};
+// تهيئة Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+// المتغيرات العامة
+let currentConversationId = null;
+let isAdminOnline = true;
+let currentReplyTo = null;
+let currentCustomerData = null;
+const customersList = document.getElementById('customersList');
+const messagesArea = document.getElementById('messagesArea');
+const messageInput = document.getElementById('messageInput');
+const sendButton = document.getElementById('sendButton');
+const currentCustomerName = document.getElementById('currentCustomerName');
+const customerDetails = document.getElementById('customerDetails');
+const typingIndicator = document.getElementById('typingIndicator');
+const toggleOnlineBtn = document.getElementById('toggleOnline');
+const refreshBtn = document.getElementById('refreshBtn');
+const adminStatus = document.getElementById('adminStatus');
+const replyPreview = document.getElementById('replyPreview');
+const replyPreviewText = document.getElementById('replyPreviewText');
+const cancelReply = document.getElementById('cancelReply');
+const deleteAllBtn = document.getElementById('deleteAllConversations'); // زر حذف الكل
+
+// تعيين حالة الإدارة كمتصلة عند تحميل الصفحة
+db.ref('chat/adminOnline').set(true);
+
+// ========== دوال إدارة المحادثات ==========
+
+// تبديل حالة الإدارة
+toggleOnlineBtn.addEventListener('click', () => {
+    isAdminOnline = !isAdminOnline;
+    db.ref('chat/adminOnline').set(isAdminOnline);
+    toggleOnlineBtn.innerHTML = isAdminOnline ? 
+        '<i class="fas fa-toggle-on"></i>' : 
+        '<i class="fas fa-toggle-off"></i>';
+    adminStatus.innerHTML = isAdminOnline ? 
+        '<div class="status-dot"></div><span>أنت متصل</span>' : 
+        '<div class="status-dot" style="background: var(--offline);"></div><span>أنت غير متصل</span>';
+    if (!isAdminOnline) {
+        document.querySelector('.sidebar-header').classList.add('admin-offline');
+    } else {
+        document.querySelector('.sidebar-header').classList.remove('admin-offline');
+    }
+});
+
+// تحديث القائمة يدويًا
+refreshBtn.addEventListener('click', () => {
+    loadConversations();
+    showNotification('تم تحديث قائمة المحادثات!');
+});
+
+// حذف جميع المحادثات
+deleteAllBtn.addEventListener('click', () => {
+    if (confirm('هل أنت متأكد أنك تريد حذف جميع المحادثات؟ لا يمكن التراجع عن هذا الإجراء.')) {
+        db.ref('chat/conversations').remove()
+            .then(() => {
+                showNotification('تم حذف جميع المحادثات بنجاح!');
+                // إعادة تعيين واجهة المستخدم
+                customersList.innerHTML = '';
+                messagesArea.innerHTML = `
+                    <div class="no-conversation">
+                        <div>
+                            <i class="fas fa-comments"></i>
+                            <p>لا توجد محادثة مختارة</p>
+                            <p>الرجاء اختيار عميل من القائمة الجانبية</p>
+                        </div>
+                    </div>
+                `;
+                currentConversationId = null;
+                currentCustomerData = null;
+                currentCustomerName.textContent = 'اختر عميلًا للدردشة';
+                customerDetails.innerHTML = '';
+                messageInput.disabled = true;
+                sendButton.disabled = true;
+            })
+            .catch((error) => {
+                showNotification('حدث خطأ أثناء حذف المحادثات: ' + error.message);
+                console.error("Error deleting conversations: ", error);
+            });
+    }
+});
+
+// تحميل قائمة المحادثات (معدّلة للتحديث التلقائي)
+function loadConversations() {
+    // أولاً: تحميل جميع المحادثات الحالية
+    db.ref('chat/conversations').once('value').then((snapshot) => {
+        customersList.innerHTML = '';
+        const conversations = snapshot.val();
+        if (conversations) {
+            Object.entries(conversations).forEach(([convId, convData]) => {
+                createCustomerItem(convId, convData);
+            });
+        }
+    });
+    // ثانياً: مراقبة التغييرات المستقبلية
+    db.ref('chat/conversations').on('child_changed', (snapshot) => {
+        const convId = snapshot.key;
+        const convData = snapshot.val();
+        updateCustomerItem(convId, convData);
+    });
+    // ثالثاً: مراقبة المحادثات الجديدة
+    db.ref('chat/conversations').on('child_added', (snapshot) => {
+        const convId = snapshot.key;
+        const convData = snapshot.val();
+        // تحقق إذا كان العنصر موجودًا بالفعل (لتجنب التكرار)
+        if (!document.getElementById(`customer-${convId}`)) {
+            createCustomerItem(convId, convData);
+        }
+    });
+    // رابعاً: مراقبة حذف المحادثات
+    db.ref('chat/conversations').on('child_removed', (snapshot) => {
+        const convId = snapshot.key;
+        const customerElement = document.getElementById(`customer-${convId}`);
+        if (customerElement) {
+            customerElement.remove();
+        }
+        // إذا كانت المحادثة المحذوفة هي المحادثة الحالية، قم بإعادة تعيين الواجهة
+        if (convId === currentConversationId) {
+            messagesArea.innerHTML = `
+                <div class="no-conversation">
+                    <div>
+                        <i class="fas fa-comments"></i>
+                        <p>لا توجد محادثة مختارة</p>
+                        <p>الرجاء اختيار عميل من القائمة الجانبية</p>
+                    </div>
+                </div>
+            `;
+            currentConversationId = null;
+            currentCustomerData = null;
+            currentCustomerName.textContent = 'اختر عميلًا للدردشة';
+            customerDetails.innerHTML = '';
+            messageInput.disabled = true;
+            sendButton.disabled = true;
+        }
+    });
+}
+
+// إنشاء عنصر عميل جديد
+function createCustomerItem(convId, convData) {
+    const customerItem = document.createElement('div');
+    customerItem.className = 'customer-item';
+    customerItem.id = `customer-${convId}`;
+    if (convId === currentConversationId) {
+        customerItem.classList.add('active');
+    }
+
+    // التحقق من وجود رسائل جديدة
+    let hasNewMessages = false;
+    if (convData.messages) {
+        const messageKeys = Object.keys(convData.messages);
+        if (messageKeys.length > 0) {
+            const lastMessage = convData.messages[messageKeys[messageKeys.length - 1]];
+            if (lastMessage.sender === 'customer' && !lastMessage.read) {
+                hasNewMessages = true;
+            }
+        }
+    }
+
+    // حالة العميل (بعد 30 دقيقة)
+    const isCustomerOnline = convData.lastActive && (Date.now() - convData.lastActive < 30 * 60 * 1000);
+    const statusClass = isCustomerOnline ? 'status-online' : 'status-offline';
+    const statusText = isCustomerOnline ? 'متصل الآن' : 'غير متصل';
+
+    // إنشاء HTML لعرض معلومات العميل
+    customerItem.innerHTML = `
+        <div class="customer-info">
+            <div class="customer-name">
+                <span>${convData.customerName || 'عميل مجهول'}</span>
+                <span class="customer-status-badge ${statusClass}" title="${statusText}"></span>
+            </div>
+            <div class="customer-preview">${convData.lastMessage || 'بدأت محادثة جديدة'}</div>
+            <div class="customer-time">
+                <i class="far fa-clock"></i>
+                ${formatTime(convData.lastActive || convData.startedAt)}
+            </div>
+        </div>
+        <button class="delete-conversation-btn" title="حذف هذه المحادثة">
+            <i class="fas fa-trash"></i>
+        </button>
+    `;
+
+    // إضافة شارة الرسائل الجديدة
+    if (hasNewMessages) {
+        const badge = document.createElement('div');
+        badge.className = 'new-message-badge';
+        badge.innerHTML = '!';
+        customerItem.appendChild(badge);
+    }
+
+    // حدث النقر لاختيار المحادثة
+    customerItem.querySelector('.customer-info').addEventListener('click', (e) => {
+        // تأكد من أن النقر لم يكن على زر الحذف
+        if (!e.target.closest('.delete-conversation-btn')) {
+            selectConversation(convId, convData);
+        }
+    });
+
+    // حدث النقر على زر الحذف
+    const deleteBtn = customerItem.querySelector('.delete-conversation-btn');
+    deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // منع انتشار الحدث إلى العنصر الأب
+        if (confirm(`هل أنت متأكد أنك تريد حذف محادثة "${convData.customerName || 'عميل مجهول'}"؟`)) {
+            deleteConversation(convId, convData.customerName);
+        }
+    });
+
+    customersList.appendChild(customerItem);
+}
+
+// حذف محادثة واحدة
+function deleteConversation(convId, customerName) {
+    db.ref(`chat/conversations/${convId}`).remove()
+        .then(() => {
+            showNotification(`تم حذف محادثة ${customerName || 'العميل'} بنجاح!`);
+            // إزالة العنصر من الواجهة إذا كان موجودًا
+            const customerElement = document.getElementById(`customer-${convId}`);
+            if (customerElement) {
+                customerElement.remove();
+            }
+            // إذا كانت المحادثة المحذوفة هي المحادثة الحالية، قم بإعادة تعيين الواجهة
+            if (convId === currentConversationId) {
+                messagesArea.innerHTML = `
+                    <div class="no-conversation">
+                        <div>
+                            <i class="fas fa-comments"></i>
+                            <p>لا توجد محادثة مختارة</p>
+                            <p>الرجاء اختيار عميل من القائمة الجانبية</p>
+                        </div>
+                    </div>
+                `;
+                currentConversationId = null;
+                currentCustomerData = null;
+                currentCustomerName.textContent = 'اختر عميلًا للدردشة';
+                customerDetails.innerHTML = '';
+                messageInput.disabled = true;
+                sendButton.disabled = true;
+            }
+        })
+        .catch((error) => {
+            showNotification('حدث خطأ أثناء حذف المحادثة: ' + error.message);
+            console.error("Error deleting conversation: ", error);
+        });
+}
+
+// تحديث عنصر عميل موجود
+function updateCustomerItem(convId, convData) {
+    const customerElement = document.getElementById(`customer-${convId}`);
+    if (!customerElement) return;
+
+    // التحقق من وجود رسائل جديدة
+    let hasNewMessages = false;
+    if (convData.messages) {
+        const messageKeys = Object.keys(convData.messages);
+        if (messageKeys.length > 0) {
+            const lastMessage = convData.messages[messageKeys[messageKeys.length - 1]];
+            if (lastMessage.sender === 'customer' && !lastMessage.read) {
+                hasNewMessages = true;
+            }
+        }
+    }
+
+    // حالة العميل (بعد 30 دقيقة)
+    const isCustomerOnline = convData.lastActive && (Date.now() - convData.lastActive < 30 * 60 * 1000);
+    const statusClass = isCustomerOnline ? 'status-online' : 'status-offline';
+    const statusText = isCustomerOnline ? 'متصل الآن' : 'غير متصل';
+
+    // إنشاء HTML جديد
+    const customerInfo = customerElement.querySelector('.customer-info');
+    if (customerInfo) {
+        customerInfo.innerHTML = `
+            <div class="customer-name">
+                <span>${convData.customerName || 'عميل مجهول'}</span>
+                <span class="customer-status-badge ${statusClass}" title="${statusText}"></span>
+            </div>
+            <div class="customer-preview">${convData.lastMessage || 'بدأت محادثة جديدة'}</div>
+            <div class="customer-time">
+                <i class="far fa-clock"></i>
+                ${formatTime(convData.lastActive || convData.startedAt)}
+            </div>
+        `;
+    }
+
+    // تحديث شارة الرسائل الجديدة
+    const existingBadge = customerElement.querySelector('.new-message-badge');
+    if (hasNewMessages && !existingBadge) {
+        const badge = document.createElement('div');
+        badge.className = 'new-message-badge';
+        badge.innerHTML = '!';
+        customerElement.appendChild(badge);
+    } else if (!hasNewMessages && existingBadge) {
+        existingBadge.remove();
+    }
+}
+
+// تنسيق الوقت
+function formatTime(timestamp) {
+    const date = new Date(timestamp);
+    const now = new Date();
+    const diffInHours = (now - date) / (1000 * 60 * 60);
+    if (diffInHours < 1) {
+        const diffInMinutes = Math.floor(diffInHours * 60);
+        return `${diffInMinutes} دقيقة مضت`;
+    } else if (diffInHours < 24) {
+        return `${Math.floor(diffInHours)} ساعة مضت`;
+    } else {
+        return `${date.toLocaleDateString('ar-EG')}`;
+    }
+}
+
+// اختيار محادثة
+function selectConversation(convId, convData) {
+    currentConversationId = convId;
+    currentCustomerData = convData;
+    // تحديث الواجهة
+    document.querySelectorAll('.customer-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    const customerElement = document.getElementById(`customer-${convId}`);
+    if (customerElement) {
+        customerElement.classList.add('active');
+    }
+    currentCustomerName.textContent = convData.customerName || 'عميل مجهول';
+    // تحديث تفاصيل العميل
+    let detailsHTML = '';
+    if (convData.customerPhone) {
+        detailsHTML += `<div class="detail">
+            <i class="fas fa-phone"></i>
+            <a href="tel:${convData.customerPhone}">${convData.customerPhone}</a>
+        </div>`;
+    }
+    detailsHTML += `<div class="detail">
+        <i class="far fa-clock"></i>
+        آخر نشاط: ${formatTime(convData.lastActive || convData.startedAt)}
+    </div>`;
+    customerDetails.innerHTML = detailsHTML;
+    messageInput.disabled = false;
+    sendButton.disabled = false;
+    messageInput.focus();
+    // تحميل الرسائل
+    loadMessages(convId);
+    // مراقبة مؤشر كتابة العميل
+    db.ref(`chat/conversations/${convId}/customerTyping`).on('value', (snapshot) => {
+        const isTyping = snapshot.val() === true;
+        typingIndicator.style.display = isTyping ? 'block' : 'none';
+    });
+}
+
+// تحميل الرسائل
+function loadMessages(convId) {
+    messagesArea.innerHTML = '';
+    db.ref(`chat/conversations/${convId}/messages`).on('value', (snapshot) => {
+        messagesArea.innerHTML = '';
+        const messages = snapshot.val();
+        if (messages) {
+            // تحويل الكائن إلى مصفوفة وفرزها حسب التوقيت
+            const sortedMessages = Object.entries(messages)
+                .sort(([,a], [,b]) => a.timestamp - b.timestamp);
+            sortedMessages.forEach(([msgId, message]) => {
+                displayMessage(message, msgId);
+                // تمييز الرسالة كمقروءة إذا كانت من العميل
+                if (message.sender === 'customer' && !message.read) {
+                    db.ref(`chat/conversations/${convId}/messages/${msgId}`).update({
+                        read: true
+                    });
+                }
+            });
+        }
+    });
+    // إضافة مستمع لردود الأفعال
+    db.ref(`chat/conversations/${convId}/reactions`).on('value', (snapshot) => {
+        const reactionsData = snapshot.val();
+        if (reactionsData) {
+            Object.keys(reactionsData).forEach(messageId => updateReactionsUI(messageId, reactionsData[messageId]));
+        }
+    });
+}
+
+// عرض الرسالة (بدون تمرير تلقائي)
+function displayMessage(message, messageId) {
+    // إنشاء العنصر الحاوي (wrapper) الذي سيحتوي على الرسالة وأيقونة الرد
+    const messageWrapper = document.createElement('div');
+    messageWrapper.className = 'message-wrapper';
+    messageWrapper.setAttribute('data-message-id', messageId);
+    // إنشاء بوكس الرسالة نفسه
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${message.sender}`;
+    if (message.type === 'location') {
+        messageDiv.classList.add('location');
+    }
+    // إضافة مؤشر الرد إذا كانت الرسالة رداً على رسالة أخرى (يظهر داخل البوكس)
+    if (message.replyTo) {
+        const replyIndicator = document.createElement('div');
+        replyIndicator.className = 'reply-indicator';
+        replyIndicator.innerHTML = `<i class="fas fa-reply"></i> <span>رد على: "${message.replyToText?.substring(0, 20) || 'رسالة سابقة'}"</span>`;
+        messageDiv.appendChild(replyIndicator);
+    }
+    let messageContent;
+    if (message.type === 'location') {
+        messageContent = document.createElement('div');
+        messageContent.className = 'location-message';
+        const link = document.createElement('a');
+        link.href = `https://www.google.com/maps?q=${message.latitude},${message.longitude}`;
+        link.target = '_blank';
+        link.textContent = `📍 الموقع: ${message.latitude.toFixed(4)}, ${message.longitude.toFixed(4)}`;
+        messageContent.appendChild(link);
+    } else {
+        messageContent = document.createElement('div');
+        messageContent.className = 'message-text';
+        messageContent.textContent = message.text;
+    }
+    const messageInfo = document.createElement('div');
+    messageInfo.className = 'message-info';
+    const date = new Date(message.timestamp);
+    const timeStr = `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+    // في message-info، نزيل أيقونة الرد من هنا لأنها ستظهر خارج البوكس
+    messageInfo.innerHTML = `
+        <span>${timeStr}</span>
+        ${message.sender === 'customer' ? '<i class="fas fa-check-double" style="color: #4CAF50;"></i>' : ''}
+    `;
+    // إنشاء قسم لردود الأفعال
+    const reactionsDiv = document.createElement('div');
+    reactionsDiv.className = 'message-reactions';
+    reactionsDiv.setAttribute('data-message-id', messageId);
+    // تجميع محتويات بوكس الرسالة
+    messageDiv.appendChild(messageContent);
+    messageDiv.appendChild(messageInfo);
+    messageDiv.appendChild(reactionsDiv);
+    // إضافة بوكس الرسالة إلى الحاوي
+    messageWrapper.appendChild(messageDiv);
+    // ======== إضافة أيقونة الرد خارج بوكس الرسالة ========
+    if (message.sender === 'customer') {
+        const replyActionIcon = document.createElement('div');
+        replyActionIcon.className = 'reply-action-icon';
+        replyActionIcon.innerHTML = '<i class="fas fa-reply"></i>';
+        replyActionIcon.title = 'رد على هذه الرسالة';
+        replyActionIcon.setAttribute('data-message-id', messageId);
+        replyActionIcon.setAttribute('data-sender', message.sender);
+        replyActionIcon.setAttribute('data-text', encodeURIComponent(message.text || ''));
+        // إضافة حدث النقر
+        replyActionIcon.addEventListener('click', (e) => {
+            const target = e.currentTarget;
+            setReplyTo(
+                target.getAttribute('data-message-id'),
+                target.getAttribute('data-sender'),
+                decodeURIComponent(target.getAttribute('data-text'))
+            );
+        });
+        // إضافة الأيقونة إلى الحاوي بجانب بوكس الرسالة
+        messageWrapper.appendChild(replyActionIcon);
+    }
+    // ======== نهاية إضافة أيقونة الرد ========
+    // إضافة الحاوي الكامل (الرسالة + الأيقونة) إلى منطقة الرسائل
+    messagesArea.appendChild(messageWrapper);
+    // ❌ تم تعطيل التمرير التلقائي
+    // messagesArea.scrollTop = messagesArea.scrollHeight;
+}
+
+// تحديث واجهة ردود الأفعال
+function updateReactionsUI(messageId, reactionsData) {
+    const reactionsDiv = document.querySelector(`.message-reactions[data-message-id="${messageId}"]`);
+    if (!reactionsDiv) return;
+    reactionsDiv.innerHTML = '';
+    Object.keys(reactionsData).forEach(reaction => {
+        const count = reactionsData[reaction];
+        const reactionEl = document.createElement('div');
+        reactionEl.className = 'reaction';
+        reactionEl.innerHTML = `${reaction} ${count > 1 ? count : ''}`;
+        reactionsDiv.appendChild(reactionEl);
+    });
+}
+
+// تعيين الرسالة التي سيتم الرد عليها
+function setReplyTo(messageId, sender, text) {
+    currentReplyTo = {
+        messageId: messageId,
+        sender: sender,
+        text: text
+    };
+    replyPreviewText.textContent = `الرد على: "${text.substring(0, 30)}${text.length > 30 ? '...' : ''}"`;
+    replyPreview.classList.add('show');
+}
+
+// إلغاء الرد
+cancelReply.addEventListener('click', () => {
+    currentReplyTo = null;
+    replyPreview.classList.remove('show');
+});
+
+// إرسال رسالة
+function sendMessage() {
+    const text = messageInput.value.trim();
+    if (text && currentConversationId) {
+        const message = {
+            sender: 'admin',
+            text: text,
+            timestamp: Date.now(),
+            read: false
+        };
+        // إذا كان هناك رد على رسالة
+        if (currentReplyTo) {
+            message.replyTo = currentReplyTo.messageId;
+            message.replyToText = currentReplyTo.text;
+        }
+        // إضافة الرسالة إلى قاعدة البيانات
+        const newMessageRef = db.ref(`chat/conversations/${currentConversationId}/messages`).push(message);
+        // تحديث آخر رسالة في ملخص المحادثة
+        db.ref(`chat/conversations/${currentConversationId}`).update({
+            lastMessage: text,
+            lastActive: Date.now()
+        });
+        // مسح حقل الإدخال وإلغاء وضع الرد
+        messageInput.value = '';
+        currentReplyTo = null;
+        replyPreview.classList.remove('show');
+        messageInput.focus();
+    }
+}
+
+// إرسال بالزر أو بالضغط على Enter
+sendButton.addEventListener('click', sendMessage);
+messageInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+// مؤشر الكتابة
+let typingTimer;
+messageInput.addEventListener('input', () => {
+    if (currentConversationId) {
+        db.ref(`chat/conversations/${currentConversationId}/adminTyping`).set(true);
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(() => {
+            db.ref(`chat/conversations/${currentConversationId}/adminTyping`).set(false);
+        }, 2000);
+    }
+});
+
+// إظهار إشعار
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+        color: var(--dark-bg);
+        padding: 15px 25px;
+        border-radius: 30px;
+        font-weight: bold;
+        z-index: 1000;
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
+        animation: slideIn 0.5s, fadeOut 0.5s 3s forwards;
+    `;
+    notification.innerHTML = `<i class="fas fa-bell"></i> ${message}`;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+        }
+    }, 3500);
+}
+
+// بدء تحميل المحادثات عند تحميل الصفحة
+loadConversations();
+</script>
+</body>
+</html>

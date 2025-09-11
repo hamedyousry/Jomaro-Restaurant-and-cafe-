@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+ <!-- ترميز الأحرف -->
+    <meta charset="UTF-8">
+
+    <!-- توافق العرض على الجوال -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- عنوان الصفحة -->
+    <title>Jomaro Restaurant and Cafe - استمتع بأفضل المأكولات والمشروبات</title>
+
+    <!-- وصف الصفحة -->
+    <meta name="description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة. احجز طاولتك الآن!">
+
+    <!-- ميتا الروبوتات -->
+    <meta name="robots" content="index, follow">
+
+    <!-- رابط كانونيكال -->
+    <link rel="canonical" href="https://example.com/this-page">
+
+    <!-- أيقونة الموقع (Favicon) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+
+    <!-- Open Graph Tags (لمشاركة الصفحة على فيسبوك، واتساب، إلخ) -->
+    <meta property="og:title" content="Jomaro Restaurant and Cafe">
+    <meta property="og:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
+    <meta property="og:image" content="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <meta property="og:url" content="https://example.com/this-page">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_AR">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jomaro Restaurant and Cafe">
+    <meta name="twitter:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
+    <meta name="twitter:image" content="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
+    <meta name="twitter:site" content="@your_twitter_handle"> <!-- استبدل باسم حسابك على تويتر -->
+
+    <!-- لون الثيم للمتصفحات الحديثة -->
+    <meta name="theme-color" content="#d62828"> <!-- لون أحمر مناسب للمطاعم -->
+
+    <!-- اسم المؤلف أو الشركة -->
+    <meta name="author" content="Jomaro Restaurant and Cafe">
+
+    <!-- كلمات مفتاحية (اختياري - لا تؤثر في SEO لكن بعض الأنظمة تستخدمها) -->
+    <meta name="keywords" content="مطعم, كافيه, جومارو, طعام, مشروبات, حجز طاولة, مأكولات, شيشة, قهوة, حلويات">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jomaro - قائمة طعام ذكية</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+   <link rel="stylesheet" href="script/styles.css">
+</head>
+<body>
+  <div class="top-fixed-controls" id="topControls">
+    <div class="language-toggle-container">
+      <button id="langToggleBtn" class="lang-toggle-btn" onclick="toggleLanguageMenu()">
+        <i class="fas fa-language"></i> 
+        <span id="langToggleText">العربية</span>
+        <i class="fas fa-chevron-down" style="margin-right: 0.3rem;"></i>
+      </button>
+      <div id="languageDropdown" class="language-dropdown">
+        <button class="lang-option" onclick="switchLanguage('ar'); toggleLanguageMenu();">
+          <i class="fas fa-flag"></i> العربية
+        </button>
+        <button class="lang-option" onclick="switchLanguage('en'); toggleLanguageMenu();">
+          <i class="fas fa-flag-usa"></i> English
+        </button>
+      </div>
+    </div>
+  </div>
+  <header>
+    <div class="logo-container">
+      <div class="logo">JOMARO</div>
+      <div class="tagline">أطيب الفطور، البيتزا، الدجاج، واللحوم</div>
+    </div>
+  </header>
+  <!-- قسم العروض المتحركة -->
+  <div class="promo-carousel-container">
+    <div class="promo-carousel">
+      <!-- سيتم ملؤه من Firebase -->
+    </div>
+    <button class="promo-nav prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="promo-nav next"><i class="fas fa-chevron-right"></i></button>
+    <div class="promo-dots"></div>
+  </div>
+  <div class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+  <main>
+    <h1 id="mainTitle" data-lang="ar">قائمة طعامنا</h1>
+    <div class="search-container">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="ابحث عن طعامك المفضل..." oninput="searchItems()">
+      </div>
+    </div>
+    <div class="main-categories-container sticky-main-categories">
+      <button class="main-scroll-btn left" onclick="scrollMainCategories('left')">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="main-categories" id="mainCategoryButtons"></div>
+      <button class="main-scroll-btn right" onclick="scrollMainCategories('right')">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    <div class="controls sticky-controls">
+      <div class="controls-group">
+        <div class="filters-container">
+          <button class="scroll-btn left" onclick="scrollCategories('left')">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="filters" id="categoryFilters"></div>
+          <button class="scroll-btn right" onclick="scrollCategories('right')">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="menu"><div class="loading">جاري تحميل الأصناف...</div></div>
+  </main>
+  <div class="cart-container">
+    <div class="cart-btn" id="cartButton">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </div>
+    <div class="cart-panel" id="cartPanel">
+      <div id="cartItems"></div>
+      <div class="cart-total" id="cartTotal">المجموع: 0 ج.م</div>
+      <div class="cart-actions">
+        <input type="text" id="tableNumber" class="table-number-input" placeholder="رقم الطاولة...">
+        <textarea id="orderNote" class="order-note-input" placeholder="ملاحظة اختيارية (مثل: بدون فلفل)" rows="2"></textarea>
+        <button class="cart-action-btn clear-cart" onclick="clearCart()">تفريغ السلة</button>
+        <button class="cart-action-btn send-whatsapp" onclick="sendOrderViaWhatsApp()">إرسال الطلب</button>
+      </div>
+    </div>
+  </div>
+  <a href="https://wa.me/+201091528121?text=مرحباً، أريد الاستفسار عن قائمة الطعام" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <div id="locationModal" class="location-modal">
+    <div class="location-content">
+      <span class="close-location" onclick="closeLocationModal()">&times;</span>
+      <h3>اختر الموقع</h3>
+      <div class="location-buttons">
+        <button onclick="openMap('madinat_nasr')" class="location-btn">
+          <i class="fas fa-building"></i> مدينة نصر
+        </button>
+        <button onclick="openMap('zahraa')" class="location-btn">
+          <i class="fas fa-home"></i> زهراء المعادي
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mapModal" class="map-modal">
+    <div class="map-content">
+      <span class="close-map">&times;</span>
+      <iframe id="mapFrame" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="image-modal">
+    <div class="image-content">
+      <span class="close-image" onclick="closeImageModal()">&times;</span>
+      <img id="modalImage" src="" alt="صورة الصنف">
+    </div>
+  </div>
+
+  <footer>
+    <p>مرحباً بكم في مطعم جومارو</p>
+    <p class="contact">للاستفسار: 01277778919
+ | على واتساب أو توصيل</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+    <button onclick="openLocationModal()" class="location-btn">
+      <i class="fas fa-map-marker-alt"></i> كيف تصل إلينا؟
+    </button>
+  </footer>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDIs4dsxIk0xtuUaTGkIlVGKuFqwHBfr7g",
+      authDomain: "app-da684.firebaseapp.com",
+      projectId: "app-da684",
+      storageBucket: "app-da684.firebasestorage.app",
+      messagingSenderId: "204039458597",
+      appId: "1:204039458597:web:5be11d7494ac10cb3314cc"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    const menuContainer = document.getElementById("menu");
+    const categoryFilters = document.getElementById("categoryFilters");
+    const scrollTopBtn = document.getElementById("scrollTop");
+    const mainTitle = document.getElementById("mainTitle");
+    const searchInput = document.getElementById("searchInput");
+    const mainCategoryButtons = document.getElementById("mainCategoryButtons");
+    const cartButton = document.getElementById("cartButton");
+    const cartPanel = document.getElementById("cartPanel");
+    const cartCount = document.getElementById("cartCount");
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+    const mapModal = document.getElementById("mapModal");
+    const mapFrame = document.getElementById("mapFrame");
+    const locationModal = document.getElementById("locationModal");
+    const topControls = document.getElementById("topControls");
+    let currentLang = localStorage.getItem('jomaro_lang') || 'ar';
+    let allItems = [];
+    let activeMainCategory = 'all';
+    let cart = [];
+    const mainCategories = {};
+    const categoryIcons = {
+      'مشروبات سخنة': '☕',
+      'كيك': '🍰',
+      'أطباق البحرية': '🐟',
+      'أطباق اللحوم': '🍖',
+      'أطباق المشاركة (تكفي فردين)': '👥',
+      'أطباق فراخ': '🍗',
+      'بيتزا': '🍕',
+      'ساندوتشات': '🥪',
+      'سلطة': '🥗',
+      'شوربة': '🍲',
+      'فطور': '🥞',
+      'مقبلات': '🍤',
+      'مكرونة': '🍝',
+      'إضافات': '➕',
+      'التصنيفات': '📋'
+    };
+    function getEnglishCategory(arabicCategory) {
+      const map = {
+        'مشروبات سخنة': 'Hot Drinks',
+        'كيك': 'Cakes',
+        'أطباق البحرية': 'Seafood',
+        'أطباق اللحوم': 'Meat Dishes',
+        'أطباق المشاركة (تكفي فردين)': 'Share Meals (Fit for Two)',
+        'أطباق فراخ': 'Chicken Dishes',
+        'بيتزا': 'Pizza',
+        'ساندوتشات': 'Sandwiches',
+        'سلطة': 'Salad',
+        'شوربة': 'Soup',
+        'فطور': 'Breakfast',
+        'مقبلات': 'Appetizers',
+        'مكرونة': 'Pasta',
+        'إضافات': 'Extras',
+        'التصنيفات': 'Categories'
+      };
+      return map[arabicCategory] || arabicCategory;
+    }
+    function getEnglishMainCategory(arabicMainCategory) {
+      const map = {
+        'المشروبات': 'Drinks',
+        'الحلويات': 'Desserts',
+        'المأكولات': 'Main Meals'
+      };
+      return map[arabicMainCategory] || arabicMainCategory;
+    }
+    function getDirectImageURL(url) {
+      if (!url) return 'https://via.placeholder.com/300x200/111/D4AF37?text=لا+يوجد+صورة';
+      const driveRegex = /https:\/\/drive\.google\.com\/file\/d\/([^\/]+)\/.*/;
+      const match = url.match(driveRegex);
+      if (match && match[1]) {
+        return `https://lh3.googleusercontent.com/d/${match[1]}=s0`;
+      }
+      return url;
+    }
+
+    // Image Modal Functions
+    function openImageModal(imageUrl) {
+      const modal = document.getElementById("imageModal");
+      const img = document.getElementById("modalImage");
+      img.src = imageUrl;
+      modal.style.display = "flex";
+      setTimeout(() => {
+        modal.classList.add("show");
+      }, 10);
+    }
+
+    function closeImageModal() {
+      const modal = document.getElementById("imageModal");
+      modal.classList.remove("show");
+      setTimeout(() => {
+        modal.style.display = "none";
+      }, 300);
+    }
+
+    // إغلاق النافذة عند النقر خارج الصورة
+    window.onclick = function(event) {
+      const modal = document.getElementById("imageModal");
+      if (event.target === modal) {
+        closeImageModal();
+      }
+    }
+
+    function openLocationModal() {
+      locationModal.style.display = "flex";
+      setTimeout(() => {
+        locationModal.classList.add("show");
+      }, 10);
+    }
+    function closeLocationModal() {
+      locationModal.classList.remove("show");
+      setTimeout(() => {
+        locationModal.style.display = "none";
+      }, 300);
+    }
+    function openMap(location) {
+      let src = "";
+      if (location === 'madinat_nasr') {
+        src = "https://maps.app.goo.gl/AwmZice4ptcsfGNv7";
+      } else if (location === 'zahraa') {
+        src = "https://maps.app.goo.gl/WWCLjFx1igehtYck9";
+      }
+      window.open(src, '_blank');
+    }
+    const closeMap = document.querySelector(".close-map");
+    closeMap.onclick = () => {
+      mapModal.classList.remove("show");
+      setTimeout(() => {
+        mapModal.style.display = "none";
+        mapFrame.src = "";
+      }, 300);
+    };
+    window.onclick = (e) => {
+      if (e.target === mapModal) {
+        mapModal.classList.remove("show");
+        setTimeout(() => {
+          mapModal.style.display = "none";
+          mapFrame.src = "";
+        }, 300);
+      }
+    };
+    function switchLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('jomaro_lang', lang);
+      document.getElementById("langToggleText").textContent = lang === 'ar' ? 'العربية' : 'English';
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', lang);
+      mainTitle.textContent = lang === 'ar' ? 'قائمة طعامنا' : 'Our Menu';
+      searchInput.placeholder = lang === 'ar' ? 'ابحث عن طعامك المفضل...' : 'Search for your favorite food...';
+      if (allItems.length > 0) {
+        renderAllItems();
+      } else {
+        loadMenu();
+      }
+      updateCartUI();
+    }
+    function toggleLanguageMenu() {
+      const dropdown = document.getElementById('languageDropdown');
+      const isVisible = dropdown.style.display === 'block';
+      document.querySelectorAll('.language-dropdown').forEach(d => d.style.display = 'none');
+      if (!isVisible) dropdown.style.display = 'block';
+    }
+    document.addEventListener('click', (e) => {
+      const container = document.querySelector('.language-toggle-container');
+      if (!container.contains(e.target)) {
+        document.getElementById('languageDropdown').style.display = 'none';
+      }
+    });
+    window.addEventListener('scroll', () => {
+      document.getElementById('languageDropdown').style.display = 'none';
+    });
+    function checkRestaurantStatus() {
+      const now = new Date();
+      const hour = now.getHours();
+      const day = now.getDay();
+      if (day >= 0 && day <= 4) {
+        return hour >= 8 && hour < 23;
+      } else {
+        return hour >= 8 && hour < 24;
+      }
+    }
+    function updateRestaurantStatus() {
+      const isOpen = checkRestaurantStatus();
+      const restaurantStatus = document.getElementById("restaurantStatus");
+      const statusText = document.getElementById("statusText");
+      if (!restaurantStatus || !statusText) return;
+      if (isOpen) {
+        restaurantStatus.className = "restaurant-status status-open";
+        statusText.textContent = currentLang === 'ar' ? 'مفتوح الآن' : 'Open Now';
+      } else {
+        restaurantStatus.className = "restaurant-status status-closed";
+        statusText.textContent = currentLang === 'ar' ? 'مغلق الآن' : 'Closed Now';
+      }
+    }
+    function addToCart(item) {
+      const existingItem = cart.find(cartItem => cartItem.id === item.id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: item.id,
+          nameAr: item.nameAr,
+          nameEn: item.nameEn,
+          price: item.price,
+          quantity: 1
+        });
+      }
+      updateCartUI();
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = currentLang === 'ar' ? 
+        `تم إضافة ${item.nameAr} إلى السلة` : 
+        `${item.nameEn} added to cart`;
+      document.body.appendChild(notification);
+      setTimeout(() => {
+        if (notification.parentNode) notification.remove();
+      }, 3000);
+    }
+    function removeFromCart(itemId) {
+      const itemIndex = cart.findIndex(item => item.id === itemId);
+      if (itemIndex !== -1) {
+        if (cart[itemIndex].quantity > 1) {
+          cart[itemIndex].quantity -= 1;
+        } else {
+          cart.splice(itemIndex, 1);
+        }
+        updateCartUI();
+      }
+    }
+    function clearCart() {
+      cart = [];
+      updateCartUI();
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = currentLang === 'ar' ? 'تم تفريغ السلة' : 'Cart cleared';
+      document.body.appendChild(notification);
+      setTimeout(() => {
+        if (notification.parentNode) notification.remove();
+      }, 3000);
+    }
+    function updateCartUI() {
+      const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+      cartCount.textContent = totalItems;
+      cartItems.innerHTML = '';
+      if (cart.length === 0) {
+        cartItems.innerHTML = `<div style="text-align: center; padding: 1rem; color: var(--gray-text);">
+          ${currentLang === 'ar' ? 'السلة فارغة' : 'Cart is empty'}
+        </div>`;
+        cartTotal.textContent = currentLang === 'ar' ? 'المجموع: 0 ج.م' : 'Total: 0 EGP';
+        return;
+      }
+      let totalPrice = 0;
+      cart.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'cart-item';
+        const itemName = currentLang === 'ar' ? item.nameAr : item.nameEn;
+        const itemTotal = item.price * item.quantity;
+        totalPrice += itemTotal;
+        itemElement.innerHTML = `
+          <div class="cart-item-info">
+            <div class="cart-item-name">${itemName}</div>
+            <div class="cart-item-price">${item.price} ج.م × ${item.quantity}</div>
+          </div>
+          <div class="cart-item-quantity">
+            <button class="quantity-btn" onclick="removeFromCart('${item.id}')">-</button>
+            <span>${item.quantity}</span>
+            <button class="quantity-btn" onclick="addToCartById('${item.id}')">+</button>
+          </div>
+        `;
+        cartItems.appendChild(itemElement);
+      });
+      cartTotal.textContent = currentLang === 'ar' ?
+        `المجموع: ${totalPrice.toFixed(2)} ج.م` :
+        `Total: ${totalPrice.toFixed(2)} EGP`;
+    }
+    function addToCartById(itemId) {
+      const item = allItems.find(item => item.id === itemId);
+      if (item) {
+        addToCart(item);
+      }
+    }
+    function sendOrderViaWhatsApp() {
+      if (cart.length === 0) {
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.textContent = currentLang === 'ar' ? 'السلة فارغة' : 'Cart is empty';
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 3000);
+        return;
+      }
+      const tableNumber = document.getElementById('tableNumber').value.trim();
+      if (!tableNumber) {
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.textContent = currentLang === 'ar' ? 'من فضلك أدخل رقم الطاولة' : 'Please enter table number';
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 3000);
+        return;
+      }
+      const note = document.getElementById('orderNote').value.trim();
+      const confirmation = confirm(
+        currentLang === 'ar' ? 
+        `هل أنت متأكد من إرسال الطلب؟
+رقم الطاولة: ${tableNumber}` : 
+        `Are you sure you want to send the order?
+Table: ${tableNumber}`
+      );
+      if (!confirmation) return;
+      const now = new Date();
+      const time = now.getHours() + ":" + String(now.getMinutes()).padStart(2, '0');
+      const orderId = "JMR-" + Math.floor(100 + Math.random() * 900);
+      let message = `🍽️ *جومارو - طلب جديد* 🍽️
+────────────────────
+🧾 *رقم الطلب:* ${orderId}
+🕒 *الوقت:* ${time}
+📌 *رقم الطاولة:* ${tableNumber}
+🛒 *العناصر المطلوبة:*
+`;
+      let subtotal = 0;
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+        message += `• ${item.nameAr} × ${item.quantity}
+  (${item.price} ج.م × ${item.quantity}) = ${itemTotal.toFixed(2)} ج.م
+`;
+      });
+      const serviceCharge = subtotal * 0.12;
+      const vat = subtotal * 0.14;
+      const total = subtotal + serviceCharge + vat;
+      message += `
+🧮 *التكاليف:*
+💰 المجموع: ${subtotal.toFixed(2)} ج.م
+⚙️ رسوم الخدمة (12%): ${serviceCharge.toFixed(2)} ج.م
+🏷️ الضريبة (14%): ${vat.toFixed(2)} ج.م
+🎯 *الإجمالي الكلي:* ${total.toFixed(2)} ج.م
+`;
+      if (note) {
+        message += `📝 *ملاحظة:* ${note}
+`;
+      }
+      message += `────────────────────
+شكرًا لطلبك! 🙏
+نبدأ في التحضير الآن.`;
+      const orderData = {
+        orderId: orderId,
+        tableNumber: tableNumber,
+        items: cart.map(item => ({
+          id: item.id,
+          nameAr: item.nameAr,
+          nameEn: item.nameEn,
+          price: item.price,
+          quantity: item.quantity
+        })),
+        subtotal: subtotal,
+        serviceCharge: serviceCharge,
+        vat: vat,
+        total: total,
+        note: note,
+        timestamp: firebase.database.ServerValue.TIMESTAMP,
+        status: "قيد التحضير"
+      };
+      db.ref('orders/' + orderId).set(orderData)
+        .then(() => {
+          const notification = document.createElement('div');
+          notification.className = 'notification';
+          notification.textContent = currentLang === 'ar' ? 'تم حفظ الطلب!' : 'Order saved!';
+          document.body.appendChild(notification);
+          setTimeout(() => notification.remove(), 3000);
+        })
+        .catch(err => {
+          console.error("فشل حفظ الطلب:", err);
+          const notification = document.createElement('div');
+          notification.className = 'notification';
+          notification.textContent = currentLang === 'ar' ? 'تم إرسال الطلب، لكن لم يتم حفظه' : 'Order sent, but not saved';
+          document.body.appendChild(notification);
+          setTimeout(() => notification.remove(), 3000);
+        });
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/+201091528121?text=${encodedMessage}`;
+      window.open(whatsappURL, '_blank');
+    }
+    function showNotification(message) {
+      const existingNotification = document.querySelector('.notification');
+      if (existingNotification) {
+        existingNotification.remove();
+      }
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.parentNode.removeChild(notification);
+        }
+      }, 3000);
+    }
+    function searchItems() {
+      const searchTerm = searchInput.value.toLowerCase();
+      if (searchTerm === '') {
+        renderAllItems();
+        return;
+      }
+      const filteredItems = allItems.filter(item => {
+        const nameAr = item.nameAr?.toLowerCase() || '';
+        const nameEn = item.nameEn?.toLowerCase() || '';
+        const descAr = item.descriptionAr?.toLowerCase() || '';
+        const descEn = item.descriptionEn?.toLowerCase() || '';
+        const categoryAr = item.categoryAr?.toLowerCase() || '';
+        const categoryEn = getEnglishCategory(item.categoryAr)?.toLowerCase() || '';
+        const notesAr = item.notesAr?.toLowerCase() || '';
+        const notesEn = item.notesEn?.toLowerCase() || '';
+        return nameAr.includes(searchTerm) || nameEn.includes(searchTerm) ||
+               descAr.includes(searchTerm) || descEn.includes(searchTerm) ||
+               categoryAr.includes(searchTerm) || categoryEn.includes(searchTerm) ||
+               notesAr.includes(searchTerm) || notesEn.includes(searchTerm);
+      });
+      renderItems(filteredItems, true);
+    }
+    function filterItems(category) {
+      searchInput.value = '';
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event?.target?.classList.add('active');
+      if (category === 'all') {
+        renderAllItems();
+        return;
+      }
+      const filteredItems = allItems.filter(item => item.categoryAr === category);
+      renderItems(filteredItems);
+    }
+    function renderItems(items, isSearch = false) {
+      menuContainer.innerHTML = '';
+      if (items.length === 0) {
+        menuContainer.innerHTML = '<div class="no-items">' +
+          (isSearch ?
+            (currentLang === 'ar' ? 'لم يتم العثور على نتائج' : 'No results found') :
+            (currentLang === 'ar' ? 'لا توجد أصناف في هذا القسم' : 'No items in this category')
+          ) + '</div>';
+        return;
+      }
+      if (isSearch) {
+        const section = document.createElement("div");
+        section.innerHTML = `<h2 class="section-title">${currentLang === 'ar' ? 'نتائج البحث' : 'Search Results'}</h2><div class="menu-grid"></div>`;
+        const grid = section.querySelector(".menu-grid");
+        items.forEach(item => createItemCard(item, grid));
+        menuContainer.appendChild(section);
+        return;
+      }
+      const categories = {};
+      items.forEach(item => {
+        const cat = currentLang === 'ar' ? item.categoryAr : getEnglishCategory(item.categoryAr) || "Others";
+        if (!categories[cat]) categories[cat] = [];
+        categories[cat].push(item);
+      });
+      for (let cat in categories) {
+        const section = document.createElement("div");
+        const categoryIcon = categoryIcons[cat] || '📋';
+        section.innerHTML = `<h2 class="section-title">${cat} <span class="category-icon">${categoryIcon}</span></h2><div class="menu-grid"></div>`;
+        const grid = section.querySelector(".menu-grid");
+        categories[cat].forEach(item => createItemCard(item, grid));
+        menuContainer.appendChild(section);
+      }
+    }
+    function renderAllItems() {
+      if (activeMainCategory === 'all') {
+        renderItems(allItems);
+      } else {
+        const filtered = allItems.filter(item => {
+          return mainCategories[item.categoryAr] === activeMainCategory;
+        });
+        renderItems(filtered);
+      }
+    }
+    /* ✅ تم التعديل: جعل الصورة غير تفاعلية */
+    function createItemCard(item, grid) {
+      const name = currentLang === 'ar' ? item.nameAr : item.nameEn;
+      const desc = currentLang === 'ar' ? item.descriptionAr : item.descriptionEn;
+      const price = item.price;
+      const card = document.createElement("div");
+      card.className = "menu-card";
+      card.setAttribute('data-lang', currentLang);
+      let badgeHTML = '';
+      if (item.tags) {
+        if (item.tags.includes('الأكثر طلباً') || item.tags.includes('most popular')) {
+          badgeHTML = `<span class="item-badge badge-popular">${currentLang === 'ar' ? 'الأكثر طلباً' : 'Most Popular'}</span>`;
+        } else if (item.tags.includes('جديد') || item.tags.includes('new')) {
+          badgeHTML = `<span class="item-badge badge-new">${currentLang === 'ar' ? 'جديد' : 'New'}</span>`;
+        } else if (item.tags.includes('عرض محدود') || item.tags.includes('limited offer')) {
+          badgeHTML = `<span class="item-badge badge-offer">${currentLang === 'ar' ? 'عرض محدود' : 'Limited Offer'}</span>`;
+        }
+      }
+      let ratingHTML = `
+        <div class="item-rating" id="rating-${item.id}">
+          <div class="stars">
+            ${[1,2,3,4,5].map(star => `
+              <i class="far fa-star" data-rating="${star}" data-item-id="${item.id}" 
+                 onclick="rateItem('${item.id}', ${star})"></i>
+            `).join('')}
+          </div>
+          <div class="avg-rating" id="avg-rating-${item.id}">
+            ${currentLang === 'ar' ? 'جاري التحميل...' : 'Loading...'}
+          </div>
+        </div>
+      `;
+      // 👇 تم التعديل — أضفنا onclick و cursor
+      card.innerHTML = `
+        <div class="image-container">
+          <img 
+            src="${getDirectImageURL(item.imageURL)}" 
+            alt="${name}" 
+            style="cursor: zoom-in;"
+            onclick="openImageModal('${getDirectImageURL(item.imageURL)}')"
+            onerror="this.src='https://via.placeholder.com/300x200/111/D4AF37?text=صورة+غير+متوفرة'">
+          ${badgeHTML}
+        </div>
+        <div class="menu-content">
+          <h3>${name}</h3>
+          <p class="description">${desc || ''}</p>
+          ${ratingHTML}
+          <div class="price-and-cart">
+            <div class="price-section">
+              <p class="price">${currentLang === 'ar' ? 'السعر: ' : 'Price: '}${price} ج.م</p>
+              <p class="fees-note">${currentLang === 'ar' ? 'يضاف 12% رسوم خدمة و14% ضريبة' : 'Includes 12% service charge and 14% VAT'}</p>
+              ${item.discount > 0 ? `<p class="discount">${currentLang === 'ar' ? 'خصم ' : 'Discount '}${item.discount}%</p>` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+      // أضف البطاقة
+      grid.appendChild(card);
+      // أضف زر إضافة إلى السلة الخارجي
+      const addToCartBtn = document.createElement('button');
+      addToCartBtn.className = 'add-to-cart-external';
+      addToCartBtn.setAttribute('data-item-id', item.id);
+      addToCartBtn.innerHTML = '<i class="fas fa-shopping-cart"></i>';
+      addToCartBtn.onclick = function(e) {
+        e.stopPropagation();
+        addToCartAndChangeColor(this, item.id);
+      };
+      card.appendChild(addToCartBtn);
+      // أضف أيقونة التقييم (نجمة)
+      const rateTrigger = document.createElement('div');
+      rateTrigger.className = 'rate-trigger-star';
+      rateTrigger.innerHTML = `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.9rem;">
+          <i class="far fa-star" style="font-size: 1rem;"></i>
+          <span id="rating-count-${item.id}" style="color: #aaa; font-size: 0.7rem; margin-top: 2px;">0</span>
+        </div>
+      `;
+      rateTrigger.onclick = (e) => {
+        e.stopPropagation();
+        const ratingBox = card.querySelector('.item-rating');
+        ratingBox.style.display = ratingBox.style.display === 'block' ? 'none' : 'block';
+      };
+      card.appendChild(rateTrigger);
+      // أرجئ تحميل التقييم
+      requestAnimationFrame(() => {
+        loadAverageRating(item.id);
+      });
+      // تحديث النجوم إذا كان المستخدم صوت من قبل
+      const hasRated = JSON.parse(localStorage.getItem('jomaro_ratings') || '{}');
+      const userRating = hasRated[item.id];
+      if (userRating) {
+        updateStarsUI(item.id, userRating);
+      }
+    }
+    function scrollMainCategories(direction) {
+      const container = document.querySelector('.main-categories');
+      const scrollAmount = 200;
+      if (direction === 'left') {
+        container.scrollLeft -= scrollAmount;
+      } else {
+        container.scrollLeft += scrollAmount;
+      }
+    }
+    function scrollCategories(direction) {
+      const container = categoryFilters;
+      const scrollAmount = 200;
+      if (direction === 'left') {
+        container.scrollLeft -= scrollAmount;
+      } else {
+        container.scrollLeft += scrollAmount;
+      }
+    }
+    function showSubCategories(mainCategory) {
+      activeMainCategory = mainCategory;
+      categoryFilters.innerHTML = '';
+      const allBtn = document.createElement('button');
+      allBtn.className = 'filter-btn active';
+      allBtn.setAttribute('data-category', 'all');
+      allBtn.innerHTML = `<i class="fas fa-th-list"></i> ${currentLang === 'ar' ? 'عرض الكل' : 'Show All'}`;
+      allBtn.onclick = () => filterItems('all');
+      categoryFilters.appendChild(allBtn);
+      Object.keys(mainCategories).forEach(subCat => {
+        if (mainCategory === 'all' || mainCategories[subCat] === mainCategory) {
+          const btn = document.createElement('button');
+          btn.className = 'filter-btn';
+          btn.setAttribute('data-category', subCat);
+          btn.innerHTML = `<i class="fas fa-utensils"></i> ${subCat} ${categoryIcons[subCat] ? categoryIcons[subCat] : '📋'}`;
+          btn.onclick = () => filterItems(subCat);
+          categoryFilters.appendChild(btn);
+        }
+      });
+    }
+    function loadMenu() {
+      menuContainer.innerHTML = '<div class="loading">' +
+        (currentLang === 'ar' ? 'جاري تحميل الأصناف...' : 'Loading items...') +
+        '</div>';
+      db.ref('menuItems').once('value')
+        .then(snapshot => {
+          allItems = [];
+          const mainCategoriesSet = new Set();
+          snapshot.forEach(mainCategorySnap => {
+            const mainCategoryName = mainCategorySnap.key;
+            const subCategoriesObj = mainCategorySnap.val();
+            Object.keys(subCategoriesObj).forEach(subCategoryName => {
+              // ✅ تجاهل العناصر التي ليست تصنيفات فرعية
+              if (subCategoryName === "type") return;
+              const items = subCategoriesObj[subCategoryName];
+              Object.keys(items).forEach(itemId => {
+                // ✅ تجاهل العناصر التي ليست أصنافًا
+                if (itemId === "type") return;
+                const item = items[itemId];
+                // ✅ تجاهل العناصر التي لا تحتوي على nameAr أو price
+                if (!item || item.available === false || !item.nameAr || item.price == null) {
+                  return;
+                }
+                allItems.push({
+                  id: itemId,
+                  ...item,
+                  categoryAr: subCategoryName,
+                  categoryEn: getEnglishCategory(subCategoryName),
+                  rating: item.rating || 0
+                });
+                mainCategories[subCategoryName] = mainCategoryName;
+              });
+            });
+            mainCategoriesSet.add(mainCategoryName);
+          });
+          console.log(`تم تحميل ${allItems.length} صنف من فيربيز`);
+          mainCategoryButtons.innerHTML = '';
+          const allBtn = document.createElement('button');
+          allBtn.className = 'main-cat-btn active';
+          allBtn.setAttribute('data-main', 'all');
+          allBtn.innerHTML = `<i class="fas fa-th-large"></i> <span>${currentLang === 'ar' ? 'عرض الكل' : 'Show All'}</span>`;
+          allBtn.onclick = () => {
+            document.querySelectorAll('.main-cat-btn').forEach(b => b.classList.remove('active'));
+            allBtn.classList.add('active');
+            showSubCategories('all');
+            searchInput.value = '';
+            menuContainer.innerHTML = '<div class="loading">' + (currentLang === 'ar' ? 'جاري التحديث...' : 'Updating...') + '</div>';
+            setTimeout(renderAllItems, 100);
+          };
+          mainCategoryButtons.appendChild(allBtn);
+          mainCategoriesSet.forEach(mainCat => {
+            if (mainCat === 'type') return;
+            const btn = document.createElement('button');
+            btn.className = 'main-cat-btn';
+            btn.setAttribute('data-main', mainCat);
+            btn.innerHTML = `<i class="fas fa-utensils"></i> <span>${
+              currentLang === 'ar' ? mainCat : getEnglishMainCategory(mainCat)
+            }</span>`;
+            btn.onclick = () => {
+              document.querySelectorAll('.main-cat-btn').forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              showSubCategories(mainCat);
+              searchInput.value = '';
+              menuContainer.innerHTML = '<div class="loading">' + (currentLang === 'ar' ? 'جاري التحديث...' : 'Updating...') + '</div>';
+              setTimeout(renderAllItems, 100);
+            };
+            mainCategoryButtons.appendChild(btn);
+          });
+          showSubCategories('all');
+          renderAllItems();
+          const filters = categoryFilters;
+          let isDown = false, startX, scrollLeft;
+          filters.addEventListener('mousedown', e => { 
+            isDown = true; 
+            filters.classList.add('active'); 
+            startX = e.pageX - filters.offsetLeft; 
+            scrollLeft = filters.scrollLeft; 
+          });
+          filters.addEventListener('mouseleave', () => { 
+            isDown = false; 
+            filters.classList.remove('active'); 
+          });
+          filters.addEventListener('mouseup', () => { 
+            isDown = false; 
+            filters.classList.remove('active'); 
+          });
+          filters.addEventListener('mousemove', e => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - filters.offsetLeft;
+            filters.scrollLeft = scrollLeft - (x - startX) * 1.5;
+          });
+          filters.addEventListener('wheel', e => { 
+            if (e.deltaY !== 0) { 
+              e.preventDefault(); 
+              filters.scrollLeft += e.deltaY; 
+            } 
+          });
+          loadPromotions(); // 🔥 تحميل العروض من Firebase
+        })
+        .catch(err => {
+          console.error("Error loading menu from Firebase:", err);
+          menuContainer.innerHTML = "<div class='no-items'>" +
+            (currentLang === 'ar' ? 'فشل تحميل البيانات. يرجى المحاولة لاحقاً' : 'Failed to load data. Please try again later') +
+            "</div>";
+        });
+    }
+    // 🔥 تحميل العروض من Firebase
+    function loadPromotions() {
+      const carousel = document.querySelector('.promo-carousel');
+      const dotsContainer = document.querySelector('.promo-dots');
+      carousel.innerHTML = '';
+      dotsContainer.innerHTML = '';
+      db.ref('promotions').orderByChild('order').once('value')
+        .then(snapshot => {
+          const promotions = [];
+          snapshot.forEach(child => {
+            promotions.push(child.val());
+          });
+          if (promotions.length === 0) {
+            console.warn("لا توجد عروض متاحة.");
+            return;
+          }
+          promotions.forEach((promo, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'promo-slide';
+            slide.style.backgroundImage = `url('${promo.image}')`;
+            const dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            const title = currentLang === 'ar' ? promo.titleAr : promo.titleEn;
+            const text = currentLang === 'ar' ? promo.textAr : promo.textEn;
+            const badge = currentLang === 'ar' ? promo.badgeAr : promo.badgeEn;
+            slide.innerHTML = `
+              <div class="promo-content" dir="${dir}">
+                <h3 class="promo-title">${title}</h3>
+                <p class="promo-text">${text}</p>
+                <span class="promo-badge">${badge}</span>
+              </div>
+            `;
+            carousel.appendChild(slide);
+            // إضافة نقطة
+            const dot = document.createElement('div');
+            dot.classList.add('promo-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+          });
+          // أعد تهيئة المتغيرات
+          const slides = document.querySelectorAll('.promo-slide');
+          const dots = document.querySelectorAll('.promo-dot');
+          window.slides = slides;
+          window.dots = dots;
+          window.totalSlides = slides.length;
+          currentSlide = 0;
+          document.querySelector('.promo-carousel').style.transform = `translateX(0)`;
+          updateDots();
+          // أعد تهيئة المؤقت
+          clearInterval(window.slideInterval);
+          window.slideInterval = setInterval(nextSlide, 5000);
+        })
+        .catch(err => {
+          console.error("فشل تحميل العروض:", err);
+        });
+    }
+    // --- نظام العروض المتحركة (Promo Carousel) ---
+    let currentSlide = 0;
+    const prevBtn = document.querySelector('.promo-nav.prev');
+    const nextBtn = document.querySelector('.promo-nav.next');
+    let slideInterval;
+    function updateDots() {
+      const dots = document.querySelectorAll('.promo-dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlide);
+      });
+    }
+    function goToSlide(index) {
+      const slides = document.querySelectorAll('.promo-slide');
+      const totalSlides = slides.length;
+      currentSlide = (index + totalSlides) % totalSlides;
+      document.querySelector('.promo-carousel').style.transform = `translateX(-${currentSlide * 100}%)`;
+      updateDots();
+    }
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+    function prevSlide() {
+      goToSlide(currentSlide - 1);
+    }
+    // أحداث الأزرار
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    // تمرير تلقائي
+    function startAutoSlide() {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+    // إعادة التوقيت عند التفاعل
+    document.querySelector('.promo-carousel-container').addEventListener('mouseenter', () => {
+      clearInterval(slideInterval);
+    });
+    document.querySelector('.promo-carousel-container').addEventListener('mouseleave', startAutoSlide);
+    // --- نظام التقييم ---
+    function getOrCreateUserId() {
+      let userId = localStorage.getItem('jomaro_user_id');
+      if (!userId) {
+        userId = 'user_' + Date.now() + '_' + Math.floor(Math.random() * 1000);
+        localStorage.setItem('jomaro_user_id', userId);
+      }
+      return userId;
+    }
+    function updateStarsUI(itemId, rating) {
+      const stars = document.querySelectorAll(`#rating-${itemId} .stars i`);
+      stars.forEach(star => {
+        const starValue = parseInt(star.getAttribute('data-rating'));
+        star.classList.remove('far', 'fas');
+        if (starValue <= rating) {
+          star.classList.add('fas');
+        } else {
+          star.classList.add('far');
+        }
+      });
+    }
+    function rateItem(itemId, rating) {
+      const hasRated = JSON.parse(localStorage.getItem('jomaro_ratings') || '{}');
+      hasRated[itemId] = rating;
+      localStorage.setItem('jomaro_ratings', JSON.stringify(hasRated));
+      const userId = getOrCreateUserId();
+      const ref = db.ref(`ratings/${itemId}/${userId}`);
+      ref.set({
+        rating: rating,
+        timestamp: firebase.database.ServerValue.TIMESTAMP,
+        userAgent: navigator.userAgent
+      })
+      .then(() => {
+        showNotification(currentLang === 'ar' ? 
+          `تم تحديث التقييم إلى ${rating} نجمة` : 
+          `Rating updated to ${rating} star(s)`);
+        updateStarsUI(itemId, rating);
+        loadAverageRating(itemId);
+      })
+      .catch(err => {
+        console.error("فشل حفظ التقييم:", err);
+        showNotification(currentLang === 'ar' ? 'فشل الحفظ' : 'Save failed');
+      });
+    }
+    function loadAverageRating(itemId) {
+      const avgEl = document.getElementById(`avg-rating-${itemId}`);
+      if (!avgEl) return;
+      avgEl.textContent = currentLang === 'ar' ? 'جاري التحميل...' : 'Loading...';
+      db.ref(`ratings/${itemId}`).once('value')
+        .then(snapshot => {
+          const ratings = snapshot.val();
+          if (!ratings || Object.keys(ratings).length === 0) {
+            avgEl.innerHTML = `<span style="color: #aaa;">${currentLang === 'ar' ? 'لا تقييمات بعد' : 'No ratings yet'}</span>`;
+            return;
+          }
+          const allRatings = Object.values(ratings);
+          const sum = allRatings.reduce((acc, r) => acc + r.rating, 0);
+          const avg = (sum / allRatings.length).toFixed(1);
+          const count = Object.keys(ratings).length;
+          avgEl.innerHTML = `
+            <strong style="color: var(--secondary-gold);">⭐ ${avg}</strong>
+            <span style="color: #ccc; margin-right: 4px;">(${count} ${currentLang === 'ar' ? 'تقييم' : 'rating'})</span>
+          `;
+          const countSpan = document.getElementById(`rating-count-${itemId}`);
+          if (countSpan) {
+            countSpan.textContent = count;
+          }
+        })
+        .catch(err => {
+          console.error("فشل جلب التقييمات:", err);
+          avgEl.innerHTML = `<span style="color: #aaa;">${currentLang === 'ar' ? 'خطأ في التحميل' : 'Error loading'}</span>`;
+        });
+    }
+    /* ✅ تم التعديل: إزالة الحركة الجانبية من زر الإضافة */
+    function addToCartAndChangeColor(button, itemId) {
+      const item = allItems.find(item => item.id === itemId);
+      if (item) {
+        button.innerHTML = '<i class="fas fa-check"></i>';
+        button.classList.add('added');
+        button.style.transform = 'scale(1.05)'; // ✅ فقط تصغير
+        setTimeout(() => {
+          button.style.transform = 'scale(1)';
+        }, 200);
+        setTimeout(() => {
+          button.innerHTML = '<i class="fas fa-shopping-cart"></i>';
+          button.classList.remove('added');
+        }, 1500);
+        addToCart(item);
+      }
+    }
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+      if (window.pageYOffset > 100) {
+        topControls.classList.add('hide');
+      } else {
+        topControls.classList.remove('hide');
+      }
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    cartButton.addEventListener('click', () => {
+      cartPanel.classList.toggle('show');
+    });
+    document.addEventListener('click', (e) => {
+      if (!cartButton.contains(e.target) && !cartPanel.contains(e.target) && !e.target.closest('.quantity-btn')) {
+        cartPanel.classList.remove('show');
+      }
+    });
+    window.onload = function() {
+      const savedLang = localStorage.getItem('jomaro_lang') || 'ar';
+      switchLanguage(savedLang);
+      loadMenu();
+      updateRestaurantStatus();
+      setInterval(updateRestaurantStatus, 3600000);
+      startAutoSlide();
+    };
+  </script>
+</body>
+</html>
