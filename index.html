@@ -3,26 +3,19 @@
 <head>
  <!-- ترميز الأحرف -->
     <meta charset="UTF-8">
-
     <!-- توافق العرض على الجوال -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- عنوان الصفحة -->
     <title>Jomaro Restaurant and Cafe - استمتع بأفضل المأكولات والمشروبات</title>
-
     <!-- وصف الصفحة -->
     <meta name="description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة. احجز طاولتك الآن!">
-
     <!-- ميتا الروبوتات -->
     <meta name="robots" content="index, follow">
-
     <!-- رابط كانونيكال -->
     <link rel="canonical" href="https://example.com/this-page">
-
     <!-- أيقونة الموقع (Favicon) -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
     <link rel="icon" type="image/png" sizes="16x16" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
-
     <!-- Open Graph Tags (لمشاركة الصفحة على فيسبوك، واتساب، إلخ) -->
     <meta property="og:title" content="Jomaro Restaurant and Cafe">
     <meta property="og:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
@@ -30,26 +23,50 @@
     <meta property="og:url" content="https://example.com/this-page">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ar_AR">
-
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jomaro Restaurant and Cafe">
     <meta name="twitter:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
     <meta name="twitter:image" content="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
     <meta name="twitter:site" content="@your_twitter_handle"> <!-- استبدل باسم حسابك على تويتر -->
-
     <!-- لون الثيم للمتصفحات الحديثة -->
     <meta name="theme-color" content="#d62828"> <!-- لون أحمر مناسب للمطاعم -->
-
     <!-- اسم المؤلف أو الشركة -->
     <meta name="author" content="Jomaro Restaurant and Cafe">
-
     <!-- كلمات مفتاحية (اختياري - لا تؤثر في SEO لكن بعض الأنظمة تستخدمها) -->
     <meta name="keywords" content="مطعم, كافيه, جومارو, طعام, مشروبات, حجز طاولة, مأكولات, شيشة, قهوة, حلويات">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jomaro - قائمة طعام ذكية</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
    <link rel="stylesheet" href="script/styles.css">
+
+  <!-- أنماط مخصصة لأيقونة الشات -->
+  <style>
+    .chat-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 95px; /* 95px = 60px (واتساب) + 35px (هامش) */
+      right: 30px; /* نفس مسافة واتساب عن اليمين */
+      background-color: #D4AF37; /* لون أرجواني داكن مميز */
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 3px #999;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .chat-float:hover {
+      transform: scale(1.1);
+      background-color: #D4AF37; /* لون أرجواني فاتح عند التحويم */
+    }
+  </style>
+
 </head>
 <body>
   <div class="top-fixed-controls" id="topControls">
@@ -138,6 +155,10 @@
   <a href="https://wa.me/+201277778919?text=مرحباً، أريد الاستفسار عن قائمة الطعام" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
+  <!-- زر الشات الجديد -->
+  <a href="chat.html" class="chat-float" target="_blank" title="الدردشة المباشرة">
+    <i class="fas fa-comment-dots"></i>
+  </a>
   <div id="locationModal" class="location-modal">
     <div class="location-content">
       <span class="close-location" onclick="closeLocationModal()">&times;</span>
@@ -158,7 +179,6 @@
       <iframe id="mapFrame" src="" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
-
   <!-- Image Modal -->
   <div id="imageModal" class="image-modal">
     <div class="image-content">
@@ -166,7 +186,6 @@
       <img id="modalImage" src="" alt="صورة الصنف">
     </div>
   </div>
-
   <footer>
     <p>مرحباً بكم في مطعم جومارو</p>
     <p class="contact">للاستفسار: 01277778919
@@ -268,7 +287,6 @@
       }
       return url;
     }
-
     // Image Modal Functions
     function openImageModal(imageUrl) {
       const modal = document.getElementById("imageModal");
@@ -279,7 +297,6 @@
         modal.classList.add("show");
       }, 10);
     }
-
     function closeImageModal() {
       const modal = document.getElementById("imageModal");
       modal.classList.remove("show");
@@ -287,7 +304,6 @@
         modal.style.display = "none";
       }, 300);
     }
-
     // إغلاق النافذة عند النقر خارج الصورة
     window.onclick = function(event) {
       const modal = document.getElementById("imageModal");
@@ -295,7 +311,6 @@
         closeImageModal();
       }
     }
-
     function openLocationModal() {
       locationModal.style.display = "flex";
       setTimeout(() => {
