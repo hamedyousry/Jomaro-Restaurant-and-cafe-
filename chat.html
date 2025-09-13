@@ -1,72 +1,43 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
- <!-- ترميز الأحرف -->
     <meta charset="UTF-8">
-
-    <!-- توافق العرض على الجوال -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- عنوان الصفحة -->
     <title>Jomaro Restaurant and Cafe - استمتع بأفضل المأكولات والمشروبات</title>
-
-    <!-- وصف الصفحة -->
     <meta name="description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة. احجز طاولتك الآن!">
-
-    <!-- ميتا الروبوتات -->
     <meta name="robots" content="index, follow">
-
-    <!-- رابط كانونيكال -->
     <link rel="canonical" href="https://example.com/this-page">
-
-    <!-- أيقونة الموقع (Favicon) -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
     <link rel="icon" type="image/png" sizes="16x16" href="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
-
-    <!-- Open Graph Tags (لمشاركة الصفحة على فيسبوك، واتساب، إلخ) -->
     <meta property="og:title" content="Jomaro Restaurant and Cafe">
     <meta property="og:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
     <meta property="og:image" content="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
     <meta property="og:url" content="https://example.com/this-page">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ar_AR">
-
-    <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jomaro Restaurant and Cafe">
     <meta name="twitter:description" content="مطعم وكافيه جومارو - مكانك المثالي للاستمتاع بأطباق لذيذة ومشروبات فاخرة في أجواء أنيقة.">
     <meta name="twitter:image" content="https://drive.google.com/uc?export=download&id=1sEuWkLCp-o1BWqcDyhol0q8NbbcbRKN9">
-    <meta name="twitter:site" content="@your_twitter_handle"> <!-- استبدل باسم حسابك على تويتر -->
-
-    <!-- لون الثيم للمتصفحات الحديثة -->
-    <meta name="theme-color" content="#d62828"> <!-- لون أحمر مناسب للمطاعم -->
-
-    <!-- اسم المؤلف أو الشركة -->
+    <meta name="twitter:site" content="@your_twitter_handle">
+    <meta name="theme-color" content="#d62828">
     <meta name="author" content="Jomaro Restaurant and Cafe">
-
-    <!-- كلمات مفتاحية (اختياري - لا تؤثر في SEO لكن بعض الأنظمة تستخدمها) -->
-    <meta name="keywords" content="مطعم, كافيه, جومارو, طعام, مشروبات, حجز طاولة, مأكولات, شيشة, قهوة, حلويات">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>دردشة جومارو 🍽️</title>
+    <meta name="keywords" content="مطعم, كافيه, جومارو, طعام, مشروبات, حجز طاولة, شيشة, قهوة, حلويات">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="script/chat.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+   <link rel="stylesheet" href="script/chat.css">
 </head>
 <body>
-  <div class="chat-header">
+    <div class="chat-header">
         <h1>دردشة جومارو 🍽️</h1>
         <p>تحدث معنا مباشرة للطلب أو الاستفسار</p>
-        <div class="connection-status" id="connectionStatus">متصل بالإنترنت</div>
-        <!-- قسم الملف الشخصي -->
-        <div class="user-profile-section" id="userProfileSection">
-            <div class="info">
-                <span><i class="fas fa-user"></i> <span id="profileName">اسمك</span></span>
-                <span><i class="fas fa-phone"></i> <span id="profilePhone">رقمك</span></span>
-            </div>
-            <div>
-                <button class="edit-profile-btn" id="editProfileBtn">تعديل</button>
-                <button class="delete-chat-btn" id="deleteChatBtn">حذف المحادثة</button>
-            </div>
+        <div class="status-row">
+            <div class="connection-status" id="connectionStatus">متصل بالإنترنت</div>
+            <button class="action-btn" id="editProfileBtn" aria-label="تعديل بيانات المستخدم">
+                <i class="fas fa-user-edit"></i>
+            </button>
+            <button class="delete-chat-btn" id="deleteChatBtn">حذف المحادثة</button>
         </div>
     </div>
     <div class="chat-container">
@@ -87,17 +58,16 @@
             <div class="input-row">
                 <input type="text" id="messageInput" placeholder="اكتب رسالتك هنا..." maxlength="500" disabled>
                 <div class="send-actions">
-                    <button class="action-btn" id="sendButton" disabled>
+                    <button class="action-btn" id="sendButton" disabled aria-label="إرسال الرسالة">
                         <i class="fas fa-paper-plane"></i>
                     </button>
-                    <button class="action-btn" id="locationButton" disabled>
+                    <button class="action-btn" id="locationButton" disabled aria-label="إرسال الموقع">
                         <i class="fas fa-map-marker-alt"></i>
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- نافذة تعديل الملف الشخصي -->
     <div class="profile-modal" id="profileModal">
         <div class="profile-content">
             <h3>تعديل بياناتك</h3>
@@ -117,7 +87,6 @@
             </div>
         </div>
     </div>
-    <!-- نافذة الترحيب -->
     <div class="welcome-modal" id="welcomeModal">
         <div class="modal-content">
             <h2>مرحبًا بك في جومارو! 🎉</h2>
@@ -145,7 +114,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
     <script>
-        // Firebase config
         const firebaseConfig = {
             apiKey: "AIzaSyDIs4dsxIk0xtuUaTGkIlVGKuFqwHBfr7g",
             authDomain: "app-da684.firebaseapp.com",
@@ -157,7 +125,6 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
         const storage = firebase.storage();
-        // Global variables
         let conversationId = localStorage.getItem('chat_conversation_id') || null;
         let customerName = localStorage.getItem('chat_customer_name') || null;
         let customerPhone = localStorage.getItem('chat_customer_phone') || null;
@@ -178,7 +145,6 @@
         const cancelReply = document.getElementById('cancelReply');
         const reactionsPopup = document.getElementById('reactionsPopup');
         const loadingOverlay = document.getElementById('loadingOverlay');
-        const editProfileBtn = document.getElementById('editProfileBtn');
         const profileModal = document.getElementById('profileModal');
         const editNameInput = document.getElementById('editNameInput');
         const editPhoneInput = document.getElementById('editPhoneInput');
@@ -186,13 +152,16 @@
         const editPhoneError = document.getElementById('editPhoneError');
         const saveProfileBtn = document.getElementById('saveProfileBtn');
         const cancelProfileBtn = document.getElementById('cancelProfileBtn');
-        const profileName = document.getElementById('profileName');
-        const profilePhone = document.getElementById('profilePhone');
         const deleteChatBtn = document.getElementById('deleteChatBtn');
+        const editProfileBtn = document.getElementById('editProfileBtn');
         let currentReplyTo = null;
         let hasInitialized = false;
         const reactions = ['❤️', '👍', '👎', '😂', '😮', '🙏', '🎉', '😍', '😢', '😡', '🤔', '👏'];
-        // Connection status
+        function scrollToBottom() {
+            setTimeout(() => {
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+            }, 100);
+        }
         function updateConnectionStatus() {
             if (navigator.onLine) {
                 connectionStatus.textContent = 'متصل بالإنترنت';
@@ -209,7 +178,6 @@
         window.addEventListener('online', updateConnectionStatus);
         window.addEventListener('offline', updateConnectionStatus);
         updateConnectionStatus();
-        // Validation helpers
         function validateName(name) {
             return name && name.trim().length >= 3;
         }
@@ -227,7 +195,6 @@
             if (cleanPhone.startsWith('201') && cleanPhone.length === 12) return '+' + cleanPhone;
             return cleanPhone;
         }
-        // Initialize chat
         function initializeChat() {
             if (hasInitialized) return;
             hasInitialized = true;
@@ -239,11 +206,7 @@
                 conversationId = generateConversationId();
                 localStorage.setItem('chat_conversation_id', conversationId);
             }
-            // تحديث بيانات المستخدم في واجهة الدردشة
-            updateProfileUI();
-            // تحميل الرسائل السابقة
             loadPreviousMessages();
-            // مراقبة وصول رسائل جديدة
             db.ref(`chat/conversations/${conversationId}/messages`).on('child_added', (snapshot) => {
                 const message = snapshot.val();
                 displayMessage(message, snapshot.key);
@@ -254,19 +217,23 @@
                         setTimeout(() => messageElement.classList.remove('new'), 2500);
                     }
                 }, 100);
+                scrollToBottom();
             });
-            // مراقبة كتابة المسؤول
             db.ref(`chat/conversations/${conversationId}/adminTyping`).on('value', (snapshot) => {
                 typingIndicator.style.display = snapshot.val() === true ? 'block' : 'none';
+                if (snapshot.val() === true) scrollToBottom();
             });
-            // مراقبة ردود الأفعال
             db.ref(`chat/conversations/${conversationId}/reactions`).on('value', (snapshot) => {
                 const reactionsData = snapshot.val();
                 if (reactionsData) {
                     Object.keys(reactionsData).forEach(messageId => updateReactionsUI(messageId, reactionsData[messageId]));
+                } else {
+                    // Clear reactions UI for all messages if no reactions exist
+                    document.querySelectorAll('.message-reactions').forEach(reactionsDiv => {
+                        reactionsDiv.innerHTML = '';
+                    });
                 }
             });
-            // عرض رسالة الترحيب إذا لم تكن هناك رسائل
             setTimeout(() => {
                 if (messagesArea.children.length === 0 || (messagesArea.children.length === 1 && messagesArea.querySelector('.welcome-message'))) {
                     displayWelcomeMessage();
@@ -289,12 +256,14 @@
                     } else {
                         displayWelcomeMessage();
                     }
+                    scrollToBottom();
                 })
                 .catch(err => {
                     console.error('فشل تحميل الرسائل السابقة:', err);
                     messagesArea.innerHTML = '';
                     displayWelcomeMessage();
                     showNotification('فشل تحميل الرسائل السابقة 😢');
+                    scrollToBottom();
                 });
         }
         function displayWelcomeMessage() {
@@ -305,8 +274,8 @@
                 timestamp: Date.now()
             };
             displayMessage(welcomeMsg, 'welcome_msg');
+            scrollToBottom();
         }
-        // عرض الرسالة
         function displayMessage(message, messageId) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${message.sender}`;
@@ -336,10 +305,7 @@
             messageInfo.className = 'message-info';
             const date = new Date(message.timestamp);
             const timeStr = `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
-            messageInfo.innerHTML = `
-                <span>${timeStr}</span>
-                <i class="fas fa-reply" title="رد على هذه الرسالة" data-message-id="${messageId}" data-sender="${message.sender}" data-text="${encodeURIComponent(message.text || '')}"></i>
-            `;
+            messageInfo.innerHTML = `<span>${timeStr}</span>`;
             if (currentReplyTo && currentReplyTo.messageId === messageId) {
                 const cancelReplyBtn = document.createElement('span');
                 cancelReplyBtn.className = 'cancel-reply-on-message';
@@ -361,37 +327,60 @@
             messageDiv.appendChild(messageInfo);
             messageDiv.appendChild(reactionsDiv);
             messagesArea.appendChild(messageDiv);
-            // إضافة حدث النقر على أي رد فعل لتعديله
+            const hammer = new Hammer(messageDiv);
+            hammer.get('swipe').set({ 
+                direction: Hammer.DIRECTION_HORIZONTAL,
+                threshold: 10,
+                velocity: 0.3
+            });
+            hammer.on('swipeleft swiperight', (e) => {
+                messageDiv.classList.add(e.type === 'swipeleft' ? 'swipe-left' : 'swipe-right');
+                setTimeout(() => messageDiv.classList.remove('swipe-left', 'swipe-right'), 300);
+                setReplyTo(messageId, message.sender, message.text || '');
+                scrollToBottom();
+            });
+            messageDiv.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (e.target.closest('.cancel-reply-on-message') || e.target.closest('.reaction')) return;
+                // Check for existing reaction to pass to popup
+                const reactionsDiv = messageDiv.querySelector('.message-reactions');
+                const existingReaction = reactionsDiv.querySelector('.reaction')?.getAttribute('data-reaction') || null;
+                showReactionsPopup(messageId, e.clientX, e.clientY, existingReaction);
+            });
             reactionsDiv.addEventListener('click', (e) => {
-                if (e.target.closest('.reaction')) {
-                    const reactionEl = e.target.closest('.reaction');
-                    const currentReaction = reactionEl.firstChild.textContent.trim();
-                    showReactionsPopup(messageId, e.clientX, e.clientY, currentReaction);
+                e.stopPropagation();
+                const reactionEl = e.target.closest('.reaction');
+                if (reactionEl) {
+                    const emoji = reactionEl.getAttribute('data-reaction');
+                    removeReaction(messageId, emoji);
                 }
             });
-            const replyIcon = messageInfo.querySelector('.fa-reply');
-            if (replyIcon) {
-                replyIcon.addEventListener('click', (e) => {
-                    const target = e.currentTarget;
-                    setReplyTo(target.getAttribute('data-message-id'), target.getAttribute('data-sender'), decodeURIComponent(target.getAttribute('data-text')));
-                });
-            }
-            messageDiv.addEventListener('click', (e) => {
-                if (e.target.closest('.fa-reply') || e.target.closest('.reaction') || e.target.closest('.cancel-reply-on-message')) return;
-                showReactionsPopup(messageId, e.clientX, e.clientY);
-            });
+            scrollToBottom();
         }
-        function showReactionsPopup(messageId, x, y, currentReaction = null) {
+        function showReactionsPopup(messageId, x, y, selectedEmoji = null) {
             reactionsPopup.innerHTML = '';
-            reactions.forEach(reaction => {
-                const btn = document.createElement('div');
-                btn.className = 'reaction-btn';
-                btn.textContent = reaction;
-                btn.addEventListener('click', () => {
-                    addOrModifyReaction(messageId, reaction, currentReaction);
-                    reactionsPopup.style.display = 'none';
+            reactionsPopup.setAttribute('data-message-id', messageId);
+            if (selectedEmoji) {
+                const deleteBtn = document.createElement('div');
+                deleteBtn.className = 'reaction-btn delete';
+                deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                deleteBtn.addEventListener('click', () => {
+                    removeReaction(messageId, selectedEmoji);
+                    reactionsPopup.classList.remove('show');
                 });
-                reactionsPopup.appendChild(btn);
+                reactionsPopup.appendChild(deleteBtn);
+            }
+            reactions.forEach(reaction => {
+                if (!selectedEmoji || reaction !== selectedEmoji) {
+                    const btn = document.createElement('div');
+                    btn.className = `reaction-btn ${reaction === selectedEmoji ? 'selected-reaction' : ''}`;
+                    btn.textContent = reaction;
+                    btn.addEventListener('click', () => {
+                        addReaction(messageId, reaction);
+                        reactionsPopup.classList.remove('show');
+                    });
+                    reactionsPopup.appendChild(btn);
+                }
             });
             const popupWidth = 220;
             const popupHeight = 120;
@@ -403,44 +392,67 @@
             reactionsPopup.style.left = `${leftPos}px`;
             reactionsPopup.style.top = `${topPos}px`;
             reactionsPopup.classList.add('show');
-            setTimeout(() => document.addEventListener('click', closeReactionsPopup, { once: true }), 100);
+            document.addEventListener('click', closeReactionsPopup, { once: true });
         }
-        function closeReactionsPopup() {
-            reactionsPopup.classList.remove('show');
+        function closeReactionsPopup(e) {
+            if (!reactionsPopup.contains(e.target)) {
+                reactionsPopup.classList.remove('show');
+            }
         }
-        // تعديل أو إضافة رد فعل
-        function addOrModifyReaction(messageId, newReaction, currentReaction = null) {
+        function addReaction(messageId, reaction) {
             if (!conversationId) return;
             const reactionRef = db.ref(`chat/conversations/${conversationId}/reactions/${messageId}`);
-            if (currentReaction) {
-                // حذف الرد الفعلي القديم
-                reactionRef.child(currentReaction).transaction(current => {
-                    if (current && current > 1) {
-                        return current - 1;
-                    } else {
-                        return null; // حذف إذا كان 1 فقط
-                    }
-                });
-            }
-            // إضافة الرد الفعلي الجديد
-            reactionRef.child(newReaction).transaction(current => (current || 0) + 1)
-                .then(() => console.log(`تم ${currentReaction ? 'تعديل' : 'إضافة'} رد الفعل إلى:`, newReaction))
-                .catch(err => {
-                    console.error('فشل تعديل/إضافة رد الفعل:', err);
-                    showNotification('فشل تعديل/إضافة رد الفعل 😢');
-                });
+            reactionRef.transaction(reactionsArray => {
+                if (!reactionsArray) reactionsArray = [];
+                // Remove any existing reaction from this conversationId (user)
+                reactionsArray = reactionsArray.filter(r => !reactions.includes(r));
+                // Add the new reaction
+                reactionsArray.push(reaction);
+                return reactionsArray;
+            }).then(result => {
+                if (result.committed) {
+                    showNotification(`تم تحديث رد الفعل: ${reaction}`);
+                    // Update UI immediately
+                    updateReactionsUI(messageId, [reaction]);
+                } else {
+                    showNotification('حدث خطأ أثناء تحديث رد الفعل!');
+                }
+            }).catch(err => {
+                console.error('فشل تحديث رد الفعل:', err);
+                showNotification('فشل تحديث رد الفعل 😢');
+            });
+        }
+        function removeReaction(messageId, reaction) {
+            if (!conversationId) return;
+            const reactionRef = db.ref(`chat/conversations/${conversationId}/reactions/${messageId}`);
+            reactionRef.transaction(reactionsArray => {
+                if (!reactionsArray) return [];
+                reactionsArray = reactionsArray.filter(r => r !== reaction);
+                return reactionsArray.length > 0 ? reactionsArray : null;
+            }).then(result => {
+                if (result.committed) {
+                    showNotification('تم حذف رد الفعل 🗑️');
+                    // Update UI immediately
+                    updateReactionsUI(messageId, result.snapshot.val() || []);
+                }
+            }).catch(err => {
+                console.error('فشل حذف رد الفعل:', err);
+                showNotification('فشل حذف رد الفعل 😢');
+            });
         }
         function updateReactionsUI(messageId, reactionsData) {
             const reactionsDiv = document.querySelector(`.message-reactions[data-message-id="${messageId}"]`);
             if (!reactionsDiv) return;
             reactionsDiv.innerHTML = '';
-            Object.keys(reactionsData).forEach(reaction => {
-                const count = reactionsData[reaction];
-                const reactionEl = document.createElement('div');
-                reactionEl.className = 'reaction';
-                reactionEl.innerHTML = `${reaction} ${count > 1 ? count : ''}`;
-                reactionsDiv.appendChild(reactionEl);
-            });
+            if (reactionsData && Array.isArray(reactionsData) && reactionsData.length > 0) {
+                reactionsData.forEach(reaction => {
+                    const reactionEl = document.createElement('div');
+                    reactionEl.className = 'reaction';
+                    reactionEl.setAttribute('data-reaction', reaction);
+                    reactionEl.textContent = reaction;
+                    reactionsDiv.appendChild(reactionEl);
+                });
+            }
         }
         function setReplyTo(messageId, sender, text) {
             currentReplyTo = {
@@ -451,13 +463,14 @@
             replyPreviewText.textContent = `الرد على: "${text.substring(0, 30) + (text.length > 30 ? '...' : '')}"`;
             replyPreview.classList.add('show');
             document.querySelectorAll('.cancel-reply-on-message').forEach(btn => btn.remove());
+            showNotification('تم تحديد الرسالة للرد.');
         }
         cancelReply.addEventListener('click', () => {
             currentReplyTo = null;
             replyPreview.classList.remove('show');
             document.querySelectorAll('.cancel-reply-on-message').forEach(btn => btn.remove());
+            showNotification('تم إلغاء الرد على الرسالة.');
         });
-        // إرسال رسالة + تحديث lastActive
         function sendMessage() {
             const text = messageInput.value.trim();
             if (text && conversationId) {
@@ -470,25 +483,21 @@
                     message.replyTo = currentReplyTo.messageId;
                     message.replyToText = currentReplyTo.text;
                 }
-                loadingOverlay.classList.add('show');
                 db.ref(`chat/conversations/${conversationId}/messages`).push(message)
                     .then(() => {
-                        // تحديث وقت آخر نشاط
                         updateLastActive();
                         messageInput.value = '';
                         currentReplyTo = null;
                         replyPreview.classList.remove('show');
                         document.querySelectorAll('.cancel-reply-on-message').forEach(btn => btn.remove());
-                        loadingOverlay.classList.remove('show');
+                        scrollToBottom();
                     })
                     .catch(err => {
                         console.error('فشل إرسال الرسالة:', err);
                         showNotification('فشل إرسال الرسالة 😢');
-                        loadingOverlay.classList.remove('show');
                     });
             }
         }
-        // تحديث lastActive
         function updateLastActive() {
             if (conversationId) {
                 db.ref(`chat/conversations/${conversationId}`).update({
@@ -500,7 +509,6 @@
         messageInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') sendMessage();
         });
-        // تحديث lastActive عند الكتابة
         let typingTimer;
         messageInput.addEventListener('input', () => {
             if (conversationId) {
@@ -514,12 +522,30 @@
         });
         locationButton.addEventListener('click', () => {
             if (!navigator.geolocation) {
-                alert('المتصفح لا يدعم خاصية تحديد الموقع');
+                showNotification('المتصفح لا يدعم خاصية تحديد الموقع 😢');
                 return;
             }
+
+            // ------------------ التغيير الجديد: رسالة إقناع مفصلة ------------------
+            const confirmationMessage = `
+            📍 نحتاج إلى الوصول إلى موقعك الحالي لمساعدتك بدقة!
+            
+            • لن نخزن موقعك.
+            • سنستخدمه فقط لإرساله إلى جومارو لتحديد أقرب فرع لنا إليك.
+            • يمكنك إيقافه في أي وقت عبر إعدادات الهاتف.
+            
+            هل توافق على مشاركة موقعك الآن؟
+            `;
+            if (!confirm(confirmationMessage)) {
+                showNotification('تم إلغاء مشاركة الموقع.');
+                return;
+            }
+            // -------------------------------------------------------------------
+
             locationButton.disabled = true;
             locationButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             loadingOverlay.classList.add('show');
+
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const { latitude, longitude } = position.coords;
@@ -528,7 +554,8 @@
                         type: 'location',
                         latitude: latitude,
                         longitude: longitude,
-                        timestamp: Date.now()
+                        timestamp: Date.now(),
+                        accuracy: position.coords.accuracy
                     };
                     db.ref(`chat/conversations/${conversationId}/messages`).push(locationMessage)
                         .then(() => {
@@ -537,6 +564,7 @@
                             locationButton.innerHTML = '<i class="fas fa-map-marker-alt"></i>';
                             loadingOverlay.classList.remove('show');
                             showNotification('تم إرسال موقعك بنجاح! 🗺️');
+                            scrollToBottom();
                         })
                         .catch(err => {
                             console.error('فشل إرسال الموقع:', err);
@@ -547,19 +575,27 @@
                         });
                 },
                 (error) => {
-                    console.error('Error getting location:', error);
-                    alert('فشل الحصول على الموقع. يرجى التأكد من تفعيل خدمات الموقع.');
+                    console.error('خطأ في الحصول على الموقع:', error);
+                    let errorMessage = 'فشل الحصول على الموقع. يرجى التأكد من تفعيل خدمات الموقع.';
+                    if (error.code === error.PERMISSION_DENIED) {
+                        errorMessage = 'تم رفض الوصول إلى الموقع. يرجى السماح بالوصول إلى الموقع في إعدادات جهازك.\n\n(يمكنك فعل ذلك من: الإعدادات > التطبيقات > [اسم المتصفح] > الأذونات > الموقع)';
+                    } else if (error.code === error.POSITION_UNAVAILABLE) {
+                        errorMessage = 'معلومات الموقع غير متوفرة. يرجى المحاولة مرة أخرى لاحقًا.';
+                    } else if (error.code === error.TIMEOUT) {
+                        errorMessage = 'انتهت مهلة طلب الموقع. يرجى المحاولة مرة أخرى.';
+                    }
+                    showNotification(errorMessage);
                     locationButton.disabled = false;
                     locationButton.innerHTML = '<i class="fas fa-map-marker-alt"></i>';
                     loadingOverlay.classList.remove('show');
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
                 }
             );
         });
-        // ======== دوال تعديل الملف الشخصي ========
-        function updateProfileUI() {
-            profileName.textContent = customerName || 'غير معروف';
-            profilePhone.textContent = customerPhone || 'غير معروف';
-        }
         editProfileBtn.addEventListener('click', () => {
             editNameInput.value = customerName || '';
             editPhoneInput.value = customerPhone || '';
@@ -595,7 +631,7 @@
                 editPhoneInput.style.boxShadow = "none";
             }
             if (isValid) {
-                const formattedPhone = formatPhone(newPhone);
+                const formattedPhone = formatPhone(newName);
                 customerName = newName;
                 customerPhone = formattedPhone;
                 localStorage.setItem('chat_customer_name', newName);
@@ -606,7 +642,6 @@
                         customerPhone: formattedPhone,
                         lastActive: Date.now()
                     }).then(() => {
-                        updateProfileUI();
                         profileModal.classList.remove('show');
                         showNotification('تم تحديث بياناتك بنجاح! ✅');
                     }).catch(err => {
@@ -616,28 +651,22 @@
                 }
             }
         });
-        // ======== دالة حذف المحادثة (نهائيًا) ========
         deleteChatBtn.addEventListener('click', () => {
             if (confirm('⚠️ تحذير: سيتم حذف المحادثة نهائيًا من النظام ولن تتمكن من استعادتها. هل أنت متأكد؟')) {
                 if (conversationId) {
-                    // حذف المحادثة بأكملها من Firebase
                     db.ref(`chat/conversations/${conversationId}`).remove()
                         .then(() => {
-                            // حذف من localStorage
                             localStorage.removeItem('chat_conversation_id');
                             localStorage.removeItem('chat_customer_name');
                             localStorage.removeItem('chat_customer_phone');
-                            // إعادة تعيين المتغيرات
                             conversationId = null;
                             customerName = null;
                             customerPhone = null;
-                            // إعادة تعيين واجهة المستخدم
                             messagesArea.innerHTML = '<div class="welcome-message"><i class="fas fa-check-circle"></i><p>تم حذف المحادثة نهائيًا بنجاح! ✅</p></div>';
                             messageInput.value = '';
                             messageInput.disabled = true;
                             sendButton.disabled = true;
                             locationButton.disabled = true;
-                            // إعادة فتح نافذة الترحيب
                             welcomeModal.classList.add('show');
                             showNotification('تم حذف المحادثة نهائيًا من النظام. ✅');
                         })
@@ -648,7 +677,6 @@
                 }
             }
         });
-        // ======== نهاية دوال تعديل الملف الشخصي ========
         function showNotification(message, duration = 3500) {
             const notification = document.createElement('div');
             notification.className = 'notification';
@@ -730,12 +758,12 @@
         }
         window.onload = () => {
             if (customerName && customerPhone && conversationId) {
-                // ❌ تم تعطيل التمرير التلقائي
-                // messagesArea.scrollTop = messagesArea.scrollHeight;
+                scrollToBottom();
             }
         };
         window.addEventListener('resize', () => {
             reactionsPopup.classList.remove('show');
+            scrollToBottom();
         });
     </script>
 </body>
